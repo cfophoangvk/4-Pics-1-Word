@@ -137,7 +137,7 @@
     </header>
     <div id="content">
       <h1>Lucky!</h1>
-      <p>NhËn quµ mçi ngµy</p>
+      <p></p>
       <div class="doors">
         <div class="door">
           <div class="boxes">
@@ -316,6 +316,23 @@
       setCookie('money', moneyLeft);
       document.getElementById('money').innerText = moneyLeft;
       setCookie('spinsLeft', spinsLeft);
+    }
+
+    //Check if the font VnAvant is supported (I know it isn't but the original game is.)
+    function isFontSupported(fontName) {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      const text = "abcdefghijklmnopqrstuvwxyz0123456789";
+      context.font = "72px monospace";
+      const defaultWidth = context.measureText(text).width;
+      context.font = `72px '${fontName}', monospace`;
+      const testWidth = context.measureText(text).width;
+      return testWidth !== defaultWidth;
+    }
+    if (isFontSupported('.VnAvant')) {
+      document.querySelector('#content p').innerText = 'NhËn quµ mçi ngµy';
+    } else {
+      document.querySelector('#content p').innerText = 'Nhận quà mỗi ngày';
     }
 
     //Updates the time left for next daily spin

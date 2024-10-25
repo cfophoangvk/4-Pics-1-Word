@@ -77,6 +77,19 @@
       cursor: auto;
       user-select: none;
     }
+
+    .back {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .back img {
+      mix-blend-mode: darken;
+      width: 30px;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+    }
   </style>
   <title>4 Pics 1 Word</title>
 </head>
@@ -94,6 +107,9 @@
       </div>
     </header>
     <div class="levels"></div>
+    <div class="back">
+      <img src="hint/home.jpg" onclick="window.location.href='index.html'">
+    </div>
   </div>
   <script>
     let totalLevels;
@@ -109,8 +125,7 @@
           totalPages = Math.ceil(totalLevels / 42);
           currentPage = getURLParameter('page') ? Number(getURLParameter('page')) : 1;
           if (totalPages < currentPage) {
-            let currentUrl = window.location.href;
-            window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?page=" + totalPages;
+            window.location.href = "level.html?page=" + totalPages;
           } else {
             document.querySelector('.center').innerText = `${currentPage}/${totalPages}`;
             renderPage();
@@ -130,13 +145,13 @@
         if (i === currentLevel) {
           levelItem.classList.add('current');
           levelItem.onclick = function () {
-            window.location.href = window.location.origin + "/index.html?level=" + i;
+            window.location.href = "/inGame.html?level=" + i;
           }
         } else if (i > currentLevel) {
           levelItem.classList.add('disabled');
         } else {
           levelItem.onclick = function () {
-            window.location.href = window.location.origin + "/index.html?level=" + i;
+            window.location.href = "/inGame.html?level=" + i;
           }
         }
         levelContainer.appendChild(levelItem);
@@ -149,12 +164,10 @@
 
     //Go to previous/next page
     function goToPreviousPage() {
-      let currentUrl = window.location.href;
-      window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?page=" + --currentPage;
+      window.location.href = "level.html?page=" + --currentPage;
     }
     function goToNextPage() {
-      let currentUrl = window.location.href;
-      window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?page=" + ++currentPage;
+      window.location.href = "level.html?page=" + ++currentPage;
     }
 
     //Get cookie (Source: W3Schools)

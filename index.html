@@ -1,694 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <link rel="icon" type="image/jpg" href="favicon.ico">
+  <title>4 Pics 1 Word</title>
   <style>
     :root {
-      --full-width: 320px;
-      --gap: 5px;
-      font-family: Helvetica, Arial;
-      user-select: none;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Helvetica', 'Arial';
     }
 
-    .container {
-      padding: 20px;
-      padding-top: 10px;
+    #container {
+      width: 360px;
+      height: 555px;
       background-color: #ddd;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-    }
-
-    header {
-      margin-bottom: 20px;
       display: flex;
-      height: 25px;
-      justify-content: space-between;
-      align-items: center;
-      color: orangered;
+      flex-direction: column;
     }
 
-    header img {
+    .main {
+      margin: auto;
+    }
+
+    .navigator {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px
+    }
+
+    .navigator img {
       mix-blend-mode: darken;
       width: 25px;
       aspect-ratio: 1/1;
       cursor: pointer;
     }
 
-    header p {
-      margin: 0;
-      font-size: 13px;
-    }
-
-    header .right {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .image-container {
-      width: var(--full-width);
-      height: var(--full-width);
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      column-gap: calc(var(--gap) / 2);
-    }
-
-    .image {
-      width: calc((var(--full-width) - var(--gap)) / 2);
-      height: calc((var(--full-width) - var(--gap)) / 2);
-      cursor: pointer;
+    .main {
+      width: 100%;
       position: relative;
-      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+      cursor: pointer;
     }
 
-    .image:nth-child(1) {
-      transform-origin: top left;
-    }
-
-    .image:nth-child(2) {
-      transform-origin: top right;
-    }
-
-    .image:nth-child(3) {
-      transform-origin: bottom left;
-    }
-
-    .image:nth-child(4) {
-      transform-origin: bottom right;
-    }
-
-    .image img {
+    .main img {
       width: 100%;
       aspect-ratio: 1/1;
-      object-fit: fill;
+      transition: opacity 1s ease-in-out;
     }
 
-    .image.expanded {
-      transform: scale(2.02);
-      z-index: 1;
-    }
-
-    .image:hover {
-      z-index: 1;
-    }
-
-    #answer {
-      margin-top: 10px;
-      width: var(--full-width);
-      height: 70px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    #answer div {
-      width: 30px;
-      height: 30px;
-      background-color: orangered;
-      text-align: center;
-      color: white;
-      font-size: 25px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    @keyframes correct {
-      from {
-        transform: rotate(0);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes wrong {
-      0% {
-        transform: rotate(0);
-      }
-
-      25% {
-        transform: rotate(30deg);
-      }
-
-      50% {
-        transform: rotate(0);
-      }
-
-      75% {
-        transform: rotate(-30deg);
-      }
-
-      100% {
-        transform: rotate(0);
-      }
-    }
-
-    #answer-option {
-      margin-top: 10px;
-      width: var(--full-width);
-      height: 70px;
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 2px;
-    }
-
-    #answer-option div {
-      background-color: turquoise;
-      color: white;
-      cursor: pointer;
-      font-size: 25px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #pacman {
-      opacity: 0;
-      width: 20px;
-      height: 20px;
-      background-color: yellow;
-      border-radius: 50%;
+    .fade {
       position: absolute;
-      bottom: 63px;
-      left: 35px;
-      animation: eat 0.5s linear infinite, move 3s linear;
-      clip-path: polygon(0% 0%, 100% 0%, 100% 21%, 44% 48%, 100% 74%, 100% 100%, 0% 100%);
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
-    @keyframes eat {
-      25% {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 44% 48%, 100% 60%, 100% 100%, 0% 100%);
-      }
-
-      50% {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 44% 48%, 100% 50%, 100% 100%, 0% 100%);
-      }
-
-      75% {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 35%, 44% 48%, 100% 59%, 100% 100%, 0% 100%);
-      }
-
-      100% {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 21%, 44% 48%, 100% 74%, 100% 100%, 0% 100%);
-      }
+    #dialog {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0.8;
+      display: none;
+      justify-content: center;
     }
 
-    @keyframes move {
-      5% {
-        opacity: 1;
-        bottom: 63px;
-        left: 35px;
-        transform: rotateZ(0);
-      }
+    #dialog button {
+      position: absolute;
+      right: 10%;
+      top: 10%;
+      background: none;
+      border: none;
+      color: #ddd;
+      font-size: 1.3em;
+      cursor: pointer;
+    }
 
-      45% {
-        opacity: 1;
-        bottom: 63px;
-        left: 305px;
-        transform: rotateZ(0);
-      }
+    #instruction {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      color: white;
+      font-size: 14px;
+      gap: 20px;
+    }
 
-      48% {
-        transform: rotateZ(90deg);
-      }
+    #instruction div {
+      display: flex;
+      align-items: center;
+    }
 
-      50% {
-        opacity: 1;
-        bottom: 30px;
-        left: 305px;
-      }
-
-      55% {
-        transform: rotateZ(180deg);
-      }
-
-      95% {
-        opacity: 1;
-        bottom: 30px;
-        left: 35px;
-        transform: rotateZ(180deg);
-      }
-
-      100% {
-        opacity: 0;
-        bottom: 30px;
-        left: 35px;
-        transform: rotateZ(180deg);
-      }
+    #instruction div img {
+      width: 25px;
+      margin-right: 5px;
     }
   </style>
-  <title>4 Pics 1 Word</title>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <div class="left">
-        <img src="hint/back.jpg" style="cursor: pointer" onclick="goBack()">
-        <img src="hint/lucky.jpg" onclick="window.location.href='luckyGift.html'">
-      </div>
-      <p id="currentLevel"></p>
-      <div class="right">
-        <img src="hint/money.jpg" style="cursor: auto;">
-        <p id="money" style="margin-right: 7px;"></p>
-        <img src="hint/openALetter.jpg" id="openALetter" onclick="revealALetter()">
-        <img src="hint/removeLetters.jpg" id="removeLetters" onclick="removeThreeLetters()">
-      </div>
-    </header>
-    <div class="image-container">
-      <div class="image" id="image1" onclick=toggleExpand(this)>
-        <img> <!-- ### FIRST PICTURE -->
-      </div>
-      <div class="image" id="image2" onclick=toggleExpand(this)>
-        <img> <!-- ### SECOND PICTURE -->
-      </div>
-      <div class="image" id="image3" onclick=toggleExpand(this)>
-        <img> <!-- ### THIRD PICTURE -->
-      </div>
-      <div class="image" id="image4" onclick=toggleExpand(this)>
-        <img> <!-- ### FOURTH PICTURE -->
+  <div id="container">
+    <div class="main" onclick="window.location.href='level.html'">
+      <img src="mainScreen1.jpg">
+      <img src="mainScreen2.jpg" class="fade">
+    </div>
+    <div class="navigator">
+      <img src="hint/lucky.jpg" onclick="window.location.href='luckyGift.html'">
+      <img src="hint/setting.jpg">
+      <img src="hint/tutorial.jpg" onclick="showDialog()">
+    </div>
+    <div id="dialog">
+      <button onclick="hideDialog()">X</button>
+      <div id="instruction">
+        <div><img src="hint/openALetter.jpg"> = 40 xu. Tự động điền 1 kí tự</div>
+        <div><img src="hint/removeLetters.jpg"> = 60 xu. Xóa bỏ 3 kí tự không cần thiết</div>
+        <div><img src="hint/lucky.jpg"> = Quay số nhận thưởng mỗi ngày.</div>
       </div>
     </div>
-    <div id="answer"></div>
-    <div id="answer-option">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div id="pacmanContainer">
-    </div>
-    <form id="nextLevel">
-      <input type="hidden" name="level">
-    </form>
   </div>
   <script>
-    var finalAnswer;
-    var level;
-    //Remember the level that user is playing recently
-    var cookieLevel = Number(getCookie('level'));
-    var urlLevel = Number(getURLParameter('level'));
-    //Process the level stored in cookie vs in URL parameter
-    if (!cookieLevel) {
-      level = 1
-    } else {
-      if (!urlLevel) {
-        level = cookieLevel;
-      } else if (urlLevel >= 0 && urlLevel <= cookieLevel) {
-        level = urlLevel;
+    let isVisible = false;
+    function displayMainScreenImage() {
+      isVisible = !isVisible;
+      if (isVisible) {
+        document.querySelector('.fade').style.opacity = 1
       } else {
-        let currentUrl = window.location.href;
-        window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?'));
+        document.querySelector('.fade').style.opacity = 0
       }
     }
-
-    //Set the money left
-    var moneyLeft = getCookie('money') ? Number(getCookie('money')) : 200;
-    setCookie('money', moneyLeft);
-    document.getElementById('money').innerText = moneyLeft;
-
-    //Fetch JSON to get level data
-    fetch('data.json').then(response => response.json())
-      .then(data => {
-        document.getElementById('currentLevel').innerText = `${level}/${data.length}`;
-        let currentLevelData = data[level - 1];
-        finalAnswer = currentLevelData.answer;
-        populateAnswer();
-      })
-
-    //Get and set cookie (Source: W3Schools)
-    function getCookie(cname) {
-      let name = cname + "=";
-      let decodedCookie = decodeURIComponent(document.cookie);
-      let ca = decodedCookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
+    function showDialog() {
+      document.getElementById('dialog').style.display = 'flex';
     }
-
-    function setCookie(cname, cvalue) {
-      const d = new Date();
-      d.setTime(d.getTime() + (2 * 30 * 24 * 60 * 60 * 1000)); //Set for 2 months
-      let expires = "expires=" + d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires;
+    function hideDialog() {
+      document.getElementById('dialog').style.display = 'none';
     }
-
-    //Set the images
-    document.getElementById('image1').querySelector('img').src = `images/${level}-1.jpg`;
-    document.getElementById('image2').querySelector('img').src = `images/${level}-2.jpg`;
-    document.getElementById('image3').querySelector('img').src = `images/${level}-3.jpg`;
-    document.getElementById('image4').querySelector('img').src = `images/${level}-4.jpg`;
-
-    //Get URL Parameter
-    function getURLParameter(param) {
-      var pageURL = window.location.search.substring(1); //remove the '?'
-      var urlVariables = pageURL.split('&'); //split the variables
-      for (var i = 0; i < urlVariables.length; i++) {
-        var paramName = urlVariables[i].split('='); //includes: key, value
-        if (paramName[0] == param) { //key
-          return paramName[1]; //value
-        }
-      }
-    }
-
-    function goBack() {
-      window.location.href = window.location.origin + "/level.html";
-    }
-
-    function populateAnswer() {
-      //Generate answer boxes
-      let answerElement = document.getElementById('answer');
-      for (let i = 0; i < finalAnswer.length; i++) {
-        const div = document.createElement('div');
-        answerElement.appendChild(div);
-      }
-
-      //Populate the answer letters to the answer option
-      let options = document.querySelectorAll("#answer-option div");
-      let set = new Set();
-      while (set.size <= finalAnswer.length) {
-        set.add(Math.floor(Math.random() * options.length));
-      }
-      let setIterator = set.values();
-      for (let i = 0; i < finalAnswer.length; i++) {
-        options[setIterator.next().value].innerText = finalAnswer[i];
-      }
-
-      //Add click event for answer options
-      options.forEach(option => {
-        if (option.innerText === '') {
-          option.innerText = generateRandomLetter();
-        }
-        option.addEventListener('click', handleOption)
-      });
-
-      //Add click event for answer boxes
-      let answers = document.querySelectorAll("#answer div");
-      answers.forEach(answer => {
-        answer.addEventListener('click', handleAnswer)
-      });
-    }
-
-    //Add click event for answer options
-    const handleOption = function () {
-      insertLetter(this);
-    }
-
-    //Add click event for answer boxes
-    const handleAnswer = function () {
-      removeLetter(this);
-    }
-
-    //Generate random letter to fill in answer options
-    function generateRandomLetter() {
-      const letters = "ABCDEGHIKLMNOPQRSTUVXY";
-      const index = Math.floor(Math.random() * letters.length);
-      return letters[index];
-    }
-
-    //When user clicks on one image, expand that image.
-    function toggleExpand(element) {
-      const isExpanded = element.classList.contains("expanded");
-
-      document.querySelectorAll('.image').forEach(item => item.classList.remove('expanded'));
-
-      if (!isExpanded) {
-        element.classList.add("expanded");
-      }
-    }
-
-    //Insert a letter from answer options to answer boxes
-    function insertLetter(option) {
-      let answerLetters = document.querySelectorAll("#answer div");
-      let cur = 0;
-      while (cur < answerLetters.length && answerLetters[cur].innerText != '') {
-        cur++;
-      }
-      if (cur >= answerLetters.length) return;
-      answerLetters[cur].innerText = option.innerText;
-      option.innerText = '';
-      if (Array.from(answerLetters).every(letter => letter.innerText !== '')) {
-        checkAnswer();
-      }
-    }
-
-    //Remove a letter from prompt answer to answer options
-    function removeLetter(answer) {
-      let optionLetters = document.querySelectorAll("#answer-option div");
-      let cur = 0;
-      while (cur < optionLetters.length && optionLetters[cur].innerText != '') {
-        cur++;
-      }
-      if (cur >= optionLetters.length) return;
-      optionLetters[cur].innerText = answer.innerText;
-      answer.innerText = ''
-    }
-
-    //Clear out the style in answer boxes
-    function clearStyle() {
-      document.querySelectorAll('#answer div').forEach(letter => {
-        letter.style.animation = '';
-        if (letter.dataset.disabled === undefined) {
-          letter.style.color = '';
-        }
-        isTimeoutExist = false
-      })
-    }
-
-    //Check the answer
-    var rightSound = new Audio('correct.m4a');
-    var wrongSound = new Audio('wrong.m4a');
-    let timeOutFunction;
-    let isTimeoutExist = false;
-    function checkAnswer() {
-      let result = '';
-      document.querySelectorAll("#answer div").forEach(letter => {
-        result += letter.innerText;
-      })
-      if (result === finalAnswer) { //Proceed to next level
-        //Play the sound
-        rightSound.play();
-        document.querySelectorAll("#answer div").forEach(letter => {
-          //Clear the effect of wrong if exist
-          if (isTimeoutExist) {
-            clearTimeout(timeOutFunction);
-            isTimeoutExist = false;
-          }
-          //Display the effect of correct
-          letter.style.animation = 'correct 3s ease';
-          letter.style.color = 'green';
-          //While displaying effect, prevent user from clicking
-          letter.removeEventListener('click', handleAnswer);
-          document.querySelector(".left img").onclick = '';
-          document.getElementById('openALetter').onclick = '';
-          document.getElementById('removeLetters').onclick = '';
-          isTimeoutExist = true;
-        });
-        //After effect completed, proceed to next level
-        setTimeout(() => {
-          let currentUrl = window.location.href;
-          window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?level=" + ++level;
-        }, 3000);
-
-        //Set the cookie of money
-        moneyLeft += 5;
-        setCookie('money', moneyLeft);
-
-        //Set the cookie of next level if user has played the current level in cookie
-        if (!cookieLevel) setCookie('level', 2)
-        else if (level === cookieLevel) {
-          setCookie('level', ++cookieLevel);
-        }
-      } else { //Try again
-        //Replay the sound
-        wrongSound.pause();
-        wrongSound.currentTime = 0;
-        wrongSound.play();
-        if (isTimeoutExist) {
-          clearTimeout(timeOutFunction);
-          isTimeoutExist = false;
-        }
-        document.querySelectorAll("#answer div").forEach(letter => {
-          letter.style.animation = 'wrong 0.3s linear 7';
-          if (letter.dataset.disabled === undefined) {
-            letter.style.color = 'rgb(185,0,0)';
-          }
-        });
-        timeOutFunction = setTimeout(clearStyle, 2000);
-        isTimeoutExist = true;
-      }
-    }
-
-    //Reveal a letter.
-    function revealALetter() {
-      //Confirmation
-      if (!confirm('Bạn có muốn mở 1 chữ cái? (40 xu)')) return;
-      //If money is less than 40, do not open
-      if (moneyLeft < 40) {
-        alert('Bạn không đủ số xu!');
-        return;
-      }
-      //Find letters which are not revealed
-      let notRevealedAnswer = [];
-      let answers = document.querySelectorAll('#answer div');
-      //Removes all letters (except for the revealed one)
-      answers.forEach((answer, index) => {
-        if (!answers[index].dataset.disabled) {
-          removeLetter(answer);
-          notRevealedAnswer.push(index);
-        }
-      });
-
-      //Find a random letter index which are not revealed
-      let randomIndex = Math.floor(Math.random() * notRevealedAnswer.length);
-      let options = document.querySelectorAll('#answer-option div');
-      //Set the answer letter index to random index
-      let i = 0;
-      while (i < options.length) {
-        if (options[i].innerText === finalAnswer[notRevealedAnswer[randomIndex]]) {
-          let answerNeedToReveal = answers[notRevealedAnswer[randomIndex]];
-          answerNeedToReveal.innerText = finalAnswer[notRevealedAnswer[randomIndex]];
-          answerNeedToReveal.style.color = 'skyblue';
-          answerNeedToReveal.dataset.disabled = '1';
-          answerNeedToReveal.removeEventListener('click', handleAnswer);
-          options[i].innerText = '';
-          break;
-        }
-        i++;
-      }
-
-      //Set the cookie of money
-      moneyLeft -= 40;
-      setCookie('money', moneyLeft);
-      document.getElementById('money').innerText = moneyLeft;
-
-      //If every letter is filled, then the answer is obviously correct
-      if (Array.from(answers).every(letter => letter.innerText !== '')) {
-        checkAnswer();
-        return;
-      }
-      //For logging purposes
-      if (i === options.length) {
-        console.log("NOT FOUND ANY LETTER!");
-        return;
-      }
-    }
-
-    //Remove three letters
-    function removeThreeLetters() {
-      //Confirmation
-      if (!confirm('Bạn có muốn xóa bớt các chữ cái? (60 xu)')) return;
-      //If money is less than 60, do not open
-      if (moneyLeft < 60) {
-        alert('Bạn không đủ số xu!');
-        return;
-      }
-      //Split the answer into an array
-      let remainingLetters = finalAnswer.split('');
-      let answers = document.querySelectorAll('#answer div');
-      answers.forEach((answer, index) => {
-        if (!answers[index].dataset.disabled) {
-          //Remove the letter if it's on the answer box
-          removeLetter(answer);
-        } else {
-          //If a letter is revealed, remove the letter from array
-          remove(remainingLetters, answer.innerText);
-        }
-      });
-      //Get the inner text of each element in answer option
-      let optionLetters = Array.from(document.querySelectorAll('#answer-option div')).map(option => option.innerText);
-      //Remove the letters that are part of the answer
-      let i = 0;
-      while (remainingLetters.length > 0 && i < optionLetters.length) {
-        if (remainingLetters.includes(optionLetters[i])) {
-          remove(remainingLetters, optionLetters[i]);
-          optionLetters[i] = '';
-        }
-        i++;
-      }
-      //Get the array of index of letters in the answer option, that are NOT part of the answer
-      let indexOfWrongLetters = optionLetters.map((option, index) => option !== '' ? index : null).filter(index => index !== null);
-      //If all unnecessary letters are removed, then return
-      if (indexOfWrongLetters.length === 0) {
-        alert('Bạn đã xóa hết các chữ cái không cần thiết!');
-        return;
-      }
-      //Set the cookie of money
-      moneyLeft -= 60;
-      setCookie('money', moneyLeft);
-      document.getElementById('money').innerText = moneyLeft;
-      //Set the pacman effect
-      doPacmanTransition();
-      //Shuffle them then get the first 3 letters
-      shuffle(indexOfWrongLetters);
-      let indexOfThreeRandomLetters = indexOfWrongLetters.slice(0, 3);
-      //Sort the array in order to shift while removing letters
-      indexOfThreeRandomLetters.sort((a, b) => a - b);
-      //Loop through the answer options to remove them.
-      document.querySelectorAll('#answer-option div').forEach((option, index) => {
-        if (indexOfThreeRandomLetters.length && index === indexOfThreeRandomLetters[0]) {
-          setTimeout(() => {
-            option.innerText = '';
-          }, (index < optionLetters.length / 2 ? index : optionLetters.length * 3 / 2 - index - 1) * (3000 / optionLetters.length))
-          indexOfThreeRandomLetters.shift();
-        }
-      });
-    }
-
-    //Pacman transition
-    function doPacmanTransition() {
-      let pacman = document.createElement('div');
-      pacman.id = 'pacman';
-      document.getElementById('pacmanContainer').appendChild(pacman);
-      setTimeout(() => {
-        pacman.remove();
-      }, 3000);
-    }
-
-    //Remove an item in array
-    function remove(arr, item) {
-      const index = arr.indexOf(item);
-      if (index > -1) {
-        arr.splice(index, 1);
-      }
-      return arr;
-    }
-
-    //Shuffle the array
-    function shuffle(arr) {
-      let m = arr.length;
-      while (m) {
-        const i = Math.floor(Math.random() * m--);
-        [arr[m], arr[i]] = [arr[i], arr[m]];
-      }
-      return arr;
-    }
+    setInterval(displayMainScreenImage, 5000);
   </script>
 </body>
 
