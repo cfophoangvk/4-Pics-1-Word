@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky Gift</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      font-family: '.VnAvant';
+    }
+
+    #container {
+      background-color: #ddd;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    header {
+      width: 100%;
+      font-family: Arial;
+      margin-bottom: 20px;
+      display: flex;
+      height: 25px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      mix-blend-mode: darken;
+      width: 25px;
+      aspect-ratio: 1/1;
+    }
+
+    header p {
+      color: orangered;
+      margin: 0;
+      font-size: 13px;
+    }
+
+    header .right,
+    header .left {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    h1 {
+      color: #25C7BE;
+      font-size: 3em;
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .doors {
+      display: flex;
+      padding: 20px;
+      background-color: #EA7353;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+
+    .door {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 1ch;
+    }
+
+    .box {
+      display: block;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box img {
+      width: 100%;
+      height: 100%;
+    }
+
+    button {
+      font-family: '.VnAvant';
+      border: none;
+      cursor: pointer;
+      color: white;
+      background-color: #25C7BE;
+      padding-inline: 20px;
+      padding-block: 8px;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <div class="left">
+        <img src="hint/back.jpg" style="cursor: pointer" onclick="history.back()">
+        <p id="spinsLeft"></p>
+      </div>
+      <div class="right">
+        <img src="hint/money.jpg">
+        <p id="money" style="margin-right: 7px;"></p>
+        <img src="hint/openALetter.jpg">
+        <img src="hint/removeLetters.jpg">
+      </div>
+    </header>
+    <h1>Lucky!</h1>
+    <p>NhËn quµ mçi ngµy</p>
+    <div class="doors">
+      <div class="door">
+        <div class="boxes">
+        </div>
+      </div>
+
+      <div class="door">
+        <div class="boxes">
+        </div>
+      </div>
+
+      <div class="door">
+        <div class="boxes">
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="spin">Spin !</button>
+    </div>
+  </div>
+
+  <script>
+    const items = [
+      "openALetter",
+      "openALetter",
+      "openALetter",
+      "openALetter",
+      "removeLetters",
+      "removeLetters",
+      "removeLetters",
+      "removeLetters",
+      "money",
+      "money",
+      "money",
+      "goodLuck",
+      "goodLuck",
+      "goodLuck",
+      "goodLuck",
+      "goodLuck",
+    ];
+    const doors = document.querySelectorAll(".door");
+    var spinsLeft = getCookie('spinsLeft') ? Number(getCookie('spinsLeft')) : 5;
+    document.getElementById('spinsLeft').innerText = `Số lần quay còn lại: ${spinsLeft}`;
+    //spin and reset event
+    document.querySelector("#spin").addEventListener("click", spin);
+    init();
+    //Set the money left
+    var moneyLeft = getCookie('money') ? Number(getCookie('money')) : 200;
+    document.getElementById('money').innerText = moneyLeft;
+
+    //Get and set cookie (Source: W3Schools)
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function setCookie(cname, cvalue) {
+      const d = new Date();
+      d.setHours(24, 0, 0, 0); //for each day
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires;
+    }
+
+    async function spin() {
+      --spinsLeft;
+      let button = document.querySelector("#spin");
+      button.disabled = true;
+      if (spinsLeft >= 0) {
+        setTimeout(() => {
+          button.disabled = false
+        }, 3000 + 3 * 300);
+      } else {
+        document.getElementById('spinsLeft').innerText = 'Bạn đã hết số lượt quay!';
+        button.style.backgroundColor = '#25C7BF89';
+        return;
+      }
+      document.getElementById('spinsLeft').innerText = `Số lần quay còn lại: ${spinsLeft}`;
+      init(false);
+      for (const door of doors) {
+        const boxes = door.querySelector(".boxes");
+        boxes.style.transform = "translateY(0)";
+        await new Promise((resolve) => setTimeout(resolve, 300));
+      }
+    }
+
+    function init(firstInit = true) {
+      let duration = 3;
+      for (const door of doors) {
+        //Spin one time
+        if (firstInit) {
+          door.dataset.spinned = "0";
+          door.dataset.firstElement = "none";
+        } else if (door.dataset.spinned === "1") {
+          return;
+        }
+
+        const boxes = door.querySelector(".boxes");
+        const boxesClone = boxes.cloneNode(false);
+        const pool = [door.dataset.firstElement];
+
+        if (!firstInit) pool.push(...shuffle(items));
+        door.dataset.firstElement = pool[pool.length - 1];
+
+        //Adds event listener to prevent clicking while spinning
+        boxesClone.addEventListener(
+          "transitionstart",
+          function () {
+            door.dataset.spinned = "1";
+          }
+        );
+        boxesClone.addEventListener(
+          "transitionend",
+          function () {
+            door.dataset.spinned = "0";
+            if (Array.from(doors).indexOf(door) === 2) {
+              checkResult();
+            }
+          }
+        );
+
+        //Add random elements to each door
+        for (let i = pool.length - 1; i >= 0; i--) {
+          const box = document.createElement("div");
+          box.classList.add("box");
+          box.style.width = door.clientWidth + "px";
+          box.style.height = door.clientHeight + "px";
+          const img = document.createElement("img");
+          img.src = `hint/${pool[i]}.jpg`;
+          box.appendChild(img);
+          boxesClone.appendChild(box);
+        }
+        boxesClone.style.transitionTimingFunction = 'linear';
+        boxesClone.style.transitionDuration = `${duration}s`;
+        boxesClone.style.transform = `translateY(-${door.clientHeight * (pool.length - 1)
+          }px)`;
+        door.replaceChild(boxesClone, boxes);
+      }
+    }
+
+    //Shuffles the order of items
+    function shuffle(arr) {
+      let m = arr.length;
+      while (m) {
+        const i = Math.floor(Math.random() * m--);
+        [arr[m], arr[i]] = [arr[i], arr[m]];
+      }
+      return arr;
+    }
+
+    function checkResult() {
+      for (const door of doors) {
+        switch (door.dataset.firstElement) {
+          case 'openALetter':
+            moneyLeft += 10;
+            break;
+          case 'removeLetters':
+            moneyLeft += 20;
+            break;
+          case 'money':
+            moneyLeft += 50;
+            break;
+        }
+      }
+      setCookie('money', moneyLeft);
+      document.getElementById('money').innerText = moneyLeft;
+      setCookie('spinsLeft', spinsLeft);
+    }
+  </script>
+</body>
+
+</html>
