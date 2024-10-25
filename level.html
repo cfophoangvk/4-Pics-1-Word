@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    :root {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Helvetica', 'Arial';
+    }
+
+    #container {
+      width: 320px;
+      height: 525px;
+      background-color: #ddd;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      width: 100%;
+      font-family: Arial;
+      display: flex;
+      height: 25px;
+      justify-content: space-between;
+      align-items: center;
+      color: orangered;
+    }
+
+    header img {
+      mix-blend-mode: darken;
+      width: 25px;
+      aspect-ratio: 1/1;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .levels {
+      width: 100%;
+      margin-top: 35px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(7, 1fr);
+      column-gap: 15px;
+      row-gap: 25px;
+    }
+
+    .level {
+      background-color: turquoise;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px;
+      font-size: 1.2em;
+    }
+
+    .current {
+      background-color: #EA7353;
+      font-size: 1.4em;
+      padding: 0;
+    }
+
+    .disabled {
+      background-color: teal;
+      color: #aaa;
+      cursor: auto;
+      user-select: none;
+    }
+  </style>
+  <title>4 Pics 1 Word</title>
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <div class="left">
+        <img src="hint/back.jpg" style="cursor: pointer;visibility: hidden;" onclick="goToPreviousPage()">
+      </div>
+      <div class="center"></div>
+      <div class="right">
+        <img src="hint/back.jpg" style="cursor: pointer;transform: rotateY(180deg);visibility: hidden;"
+          onclick="goToNextPage()">
+      </div>
+    </header>
+    <div class="levels"></div>
+  </div>
+  <script>
+    let totalLevels;
+    let totalPages;
+    let currentPage;
+    let currentLevel = getCookie('level') ? Number(getCookie('level')) : 1;
+    let levelContainer = document.querySelector('.levels');
+    //Fetch JSON to get level data
+    window.onload = function () {
+      fetch('data.json').then(response => response.json())
+        .then(data => {
+          totalLevels = data.length;
+          totalPages = Math.ceil(totalLevels / 42);
+          currentPage = getURLParameter('page') ? Number(getURLParameter('page')) : 1;
+          if (totalPages < currentPage) {
+            let currentUrl = window.location.href;
+            window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?page=" + totalPages;
+          } else {
+            document.querySelector('.center').innerText = `${currentPage}/${totalPages}`;
+            renderPage();
+          }
+        })
+    }
+
+    //Render the pages
+    function renderPage() {
+      let firstItem = (currentPage - 1) * 42 + 1;
+      let lastItem = currentPage !== totalPages ? currentPage * 42 : totalLevels;
+      for (let i = firstItem; i <= lastItem; i++) {
+        //Add a level item
+        let levelItem = document.createElement('div');
+        levelItem.classList.add('level');
+        levelItem.innerText = i;
+        if (i === currentLevel) {
+          levelItem.classList.add('current');
+          levelItem.onclick = function () {
+            window.location.href = window.location.origin + "/index.html?level=" + i;
+          }
+        } else if (i > currentLevel) {
+          levelItem.classList.add('disabled');
+        } else {
+          levelItem.onclick = function () {
+            window.location.href = window.location.origin + "/index.html?level=" + i;
+          }
+        }
+        levelContainer.appendChild(levelItem);
+      }
+      //If currently in first page, hide the previous button
+      document.querySelector('.left img').style.visibility = currentPage === 1 ? 'hidden' : 'visible';
+      //If currently in last page, hide the next button
+      document.querySelector('.right img').style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
+    }
+
+    //Go to previous/next page
+    function goToPreviousPage() {
+      let currentUrl = window.location.href;
+      window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?page=" + --currentPage;
+    }
+    function goToNextPage() {
+      let currentUrl = window.location.href;
+      window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?page=" + ++currentPage;
+    }
+
+    //Get cookie (Source: W3Schools)
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    //Get URL Parameter
+    function getURLParameter(param) {
+      var pageURL = window.location.search.substring(1); //remove the '?'
+      var urlVariables = pageURL.split('&'); //split the variables
+      for (var i = 0; i < urlVariables.length; i++) {
+        var paramName = urlVariables[i].split('='); //includes: key, value
+        if (paramName[0] == param) { //key
+          return paramName[1]; //value
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

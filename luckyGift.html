@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucky Gift</title>
+  <title>4 Pics 1 Word</title>
   <style>
     body {
       width: 100vw;
       height: 100vh;
       margin: 0;
-      font-family: '.VnAvant';
+      font-family: '.VnAvant', 'Arial';
+      user-select: none;
     }
 
     #container {
+      width: 320px;
+      height: 525px;
       background-color: #ddd;
       position: absolute;
       top: 50%;
@@ -23,19 +24,21 @@
       padding-top: 10px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
     }
 
+    #time {
+      color: #333;
+      font-size: 0.7em;
+    }
 
     header {
       width: 100%;
       font-family: Arial;
-      margin-bottom: 20px;
       display: flex;
       height: 25px;
       justify-content: space-between;
-      align-items: center;
+      color: orangered;
     }
 
     header img {
@@ -45,8 +48,6 @@
     }
 
     header p {
-      color: orangered;
-      margin: 0;
       font-size: 13px;
     }
 
@@ -67,9 +68,19 @@
       margin: 0;
     }
 
+    #content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin: auto;
+    }
+
     .doors {
       display: flex;
-      padding: 20px;
+      justify-content: center;
+      width: 100%;
+      padding-block: 20px;
       background-color: #EA7353;
       margin-top: 30px;
       margin-bottom: 40px;
@@ -112,7 +123,10 @@
     <header>
       <div class="left">
         <img src="hint/back.jpg" style="cursor: pointer" onclick="history.back()">
-        <p id="spinsLeft"></p>
+        <div>
+          <p id="spinsLeft"></p>
+          <p id="time">00:00:00</p>
+        </div>
       </div>
       <div class="right">
         <img src="hint/money.jpg">
@@ -121,27 +135,28 @@
         <img src="hint/removeLetters.jpg">
       </div>
     </header>
-    <h1>Lucky!</h1>
-    <p>NhËn quµ mçi ngµy</p>
-    <div class="doors">
-      <div class="door">
-        <div class="boxes">
+    <div id="content">
+      <h1>Lucky!</h1>
+      <p>NhËn quµ mçi ngµy</p>
+      <div class="doors">
+        <div class="door">
+          <div class="boxes">
+          </div>
+        </div>
+
+        <div class="door">
+          <div class="boxes">
+          </div>
+        </div>
+
+        <div class="door">
+          <div class="boxes">
+          </div>
         </div>
       </div>
-
-      <div class="door">
-        <div class="boxes">
-        </div>
+      <div class="buttons">
+        <button id="spin">Spin !</button>
       </div>
-
-      <div class="door">
-        <div class="boxes">
-        </div>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <button id="spin">Spin !</button>
     </div>
   </div>
 
@@ -302,6 +317,22 @@
       document.getElementById('money').innerText = moneyLeft;
       setCookie('spinsLeft', spinsLeft);
     }
+
+    //Updates the time left for next daily spin
+    function updateTime() {
+      const now = new Date();
+      const distance = new Date().setHours(24, 0, 0, 0);
+      const remainingTime = distance - now;
+      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+      const zeroPadding = (num) => String(num).padStart(2, "0");
+
+      document.getElementById('time').innerText = `${zeroPadding(hours)}:${zeroPadding(minutes)}:${zeroPadding(seconds)}`
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
   </script>
 </body>
 

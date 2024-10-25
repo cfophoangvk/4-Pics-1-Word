@@ -8,6 +8,7 @@
       --full-width: 320px;
       --gap: 5px;
       font-family: Helvetica, Arial;
+      user-select: none;
     }
 
     .container {
@@ -26,6 +27,7 @@
       height: 25px;
       justify-content: space-between;
       align-items: center;
+      color: orangered;
     }
 
     header img {
@@ -36,8 +38,8 @@
     }
 
     header p {
-      color: orangered;
       margin: 0;
+      font-size: 13px;
     }
 
     header .right {
@@ -157,7 +159,6 @@
       grid-template-columns: repeat(7, 1fr);
       grid-template-rows: repeat(2, 1fr);
       gap: 2px;
-
     }
 
     #answer-option div {
@@ -245,13 +246,14 @@
       }
     }
   </style>
-  <title>4 pics 1 word</title>
+  <title>4 Pics 1 Word</title>
 </head>
 
 <body>
   <div class="container">
     <header>
       <div class="left">
+        <img src="hint/back.jpg" style="cursor: pointer" onclick="goBack()">
         <img src="hint/lucky.jpg" onclick="window.location.href='luckyGift.html'">
       </div>
       <p id="currentLevel"></p>
@@ -373,6 +375,10 @@
           return paramName[1]; //value
         }
       }
+    }
+
+    function goBack() {
+      window.location.href = window.location.origin + "/level.html";
     }
 
     function populateAnswer() {
@@ -506,8 +512,8 @@
         });
         //After effect completed, proceed to next level
         setTimeout(() => {
-          document.getElementsByName('level')[0].value = ++level;
-          document.getElementById('nextLevel').submit();
+          let currentUrl = window.location.href;
+          window.location.href = currentUrl.substring(0, currentUrl.lastIndexOf('?')) + "?level=" + ++level;
         }, 3000);
 
         //Set the cookie of money
