@@ -1,6 +1,6 @@
 <h1 align="center">Hi 👋, I'm cfophoangvk</h1>
 <h3 align="center">A passionated .NET developer</h3>
-<p>(although this project is NOT about .NET)</p>
+<p align="center">(although this project is NOT about .NET)</p>
 <h4 align="center">About this project:</h4>
 - 🔭 This project has started for <b>5</b> days. (2024/10/22 - ...)<br>
 - Number of LOCs: <b>1,556</b> (Upgrading)<br>
