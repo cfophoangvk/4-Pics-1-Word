@@ -9,6 +9,8 @@
       --gap: 5px;
       font-family: Helvetica, Arial;
       user-select: none;
+      -webkit-user-select: none;
+      /* SAFARI */
     }
 
     .container {
@@ -286,6 +288,17 @@
         bottom: 30px;
         left: 35px;
         transform: rotateZ(180deg);
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      * {
+        height: auto;
+      }
+
+      #container {
+        --full-width: 100vw;
+        height: 100vh;
       }
     }
   </style>

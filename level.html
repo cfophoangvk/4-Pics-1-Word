@@ -8,6 +8,9 @@
       height: 100vh;
       margin: 0;
       font-family: 'Helvetica', 'Arial';
+      user-select: none;
+      -webkit-user-select: none;
+      /* SAFARI */
     }
 
     #container {
@@ -19,7 +22,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 20px;
-      padding-top: 10px;
       display: flex;
       flex-direction: column;
     }
@@ -75,7 +77,6 @@
       background-color: teal;
       color: #aaa;
       cursor: auto;
-      user-select: none;
     }
 
     .back {
@@ -89,6 +90,53 @@
       width: 30px;
       aspect-ratio: 1/1;
       cursor: pointer;
+    }
+
+    /* FOR MOBILE */
+    @media only screen and (max-width: 768px) {
+      #container {
+        width: 100vw;
+        height: 100vh;
+        font-size: 1.3em;
+        padding: 0;
+      }
+
+      header {
+        width: auto;
+        margin-inline: 20px;
+        margin-top: 13px;
+      }
+
+      header img{
+        width: calc(100vw / 20);
+        min-width: 30px;
+      }
+
+      .levels {
+        width: auto;
+        margin-inline: 10px;
+        column-gap: 5px;
+        row-gap: 15px;
+      }
+
+      .level {
+        margin-inline: 5px;
+        padding: 4px;
+        font-size: 1em;
+      }
+
+      .navigator {
+        gap: 15px;
+      }
+
+      .navigator img {
+        width: 80px;
+      }
+
+      .back img{
+        width: calc(100vw / 16);
+        min-width: 30px;
+      }
     }
   </style>
   <title>4 Pics 1 Word</title>

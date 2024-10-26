@@ -25,6 +25,16 @@
 
     .main {
       margin: auto;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .main img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      transition: opacity 1s ease-in-out;
     }
 
     .navigator {
@@ -39,19 +49,6 @@
       width: 25px;
       aspect-ratio: 1/1;
       cursor: pointer;
-    }
-
-    .main {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .main img {
-      width: 100%;
-      aspect-ratio: 1/1;
-      transition: opacity 1s ease-in-out;
     }
 
     .fade {
@@ -101,6 +98,33 @@
     #instruction div img {
       width: 25px;
       margin-right: 5px;
+      border-radius: 50%;
+    }
+
+    /* FOR MOBILE */
+    @media only screen and (max-width: 768px) {
+      #container {
+        width: 100vw;
+        height: 100vh;
+        font-size: 3em;
+      }
+
+      .main img {
+        max-height: 450px;
+      }
+
+      .navigator {
+        gap: calc(100vw / 75)
+      }
+
+      .navigator img {
+        width: calc(100vw / 15);
+        min-width: 30px;
+      }
+
+      #dialog button {
+        font-size: 0.5em;
+      }
     }
   </style>
 </head>
