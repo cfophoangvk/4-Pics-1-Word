@@ -8,7 +8,7 @@
       width: 100vw;
       height: 100vh;
       margin: 0;
-      font-family: '.VnAvant', 'Arial';
+      font-family: '.VnAvant','Helvetica', 'Arial';
       user-select: none;
     }
 
@@ -34,7 +34,7 @@
 
     header {
       width: 100%;
-      font-family: Arial;
+      font-family: 'Helvetica', Arial;
       display: flex;
       height: 25px;
       justify-content: space-between;
@@ -48,7 +48,7 @@
     }
 
     header p {
-      font-size: 13px;
+      font-size: 15px;
     }
 
     header .right,
@@ -115,6 +115,63 @@
       padding-block: 8px;
       font-size: 1.1rem;
     }
+
+    .navigator {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px
+    }
+
+    .navigator img {
+      mix-blend-mode: darken;
+      width: 25px;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+    }
+
+    #dialog {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: translate(-20px, -10px);
+      background-color: black;
+      opacity: 0.8;
+      display: none;
+      justify-content: center;
+    }
+
+    #dialog button {
+      position: absolute;
+      right: 10%;
+      top: 10%;
+      background: none;
+      border: none;
+      color: #ddd;
+      font-size: 1.3em;
+      cursor: pointer;
+    }
+
+    #instruction {
+      display: flex;
+      font-family: 'Helvetica', 'Arial';
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      color: white;
+      font-size: 14px;
+      gap: 20px;
+    }
+
+    #instruction div {
+      display: flex;
+      align-items: center;
+    }
+
+    #instruction div img {
+      width: 25px;
+      margin-right: 5px;
+    }
   </style>
 </head>
 
@@ -130,9 +187,7 @@
       </div>
       <div class="right">
         <img src="hint/money.jpg">
-        <p id="money" style="margin-right: 7px;"></p>
-        <img src="hint/openALetter.jpg">
-        <img src="hint/removeLetters.jpg">
+        <p id="money"></p>
       </div>
     </header>
     <div id="content">
@@ -156,6 +211,20 @@
       </div>
       <div class="buttons">
         <button id="spin">Spin !</button>
+      </div>
+    </div>
+    <div class="navigator">
+      <img src="hint/lucky.jpg" onclick="window.location.href='luckyGift.html'">
+      <img src="hint/setting.jpg">
+      <img src="hint/tutorial.jpg" onclick="showDialog()">
+    </div>
+    <div id="dialog">
+      <button onclick="hideDialog()">X</button>
+      <div id="instruction">
+        <div><img src="hint/openALetter.jpg"> = +5 xu.</div>
+        <div><img src="hint/removeLetters.jpg"> = +10 xu.</div>
+        <div><img src="hint/money.jpg"> = +30 xu</div>
+        <div><img src="hint/goodLuck.jpg"> = May mắn lần sau!</div>
       </div>
     </div>
   </div>
@@ -299,17 +368,18 @@
       return arr;
     }
 
+    //Check the result of spinning
     function checkResult() {
       for (const door of doors) {
         switch (door.dataset.firstElement) {
           case 'openALetter':
-            moneyLeft += 10;
+            moneyLeft += 5;
             break;
           case 'removeLetters':
-            moneyLeft += 20;
+            moneyLeft += 10;
             break;
           case 'money':
-            moneyLeft += 50;
+            moneyLeft += 30;
             break;
         }
       }
@@ -350,6 +420,14 @@
     }
     setInterval(updateTime, 1000);
     updateTime();
+
+    //Show/hide dialog
+    function showDialog() {
+      document.getElementById('dialog').style.display = 'flex';
+    }
+    function hideDialog() {
+      document.getElementById('dialog').style.display = 'none';
+    }
   </script>
 </body>
 

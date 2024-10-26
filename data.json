@@ -1,190 +1,252 @@
 [
   {
     "level": 1,
-    "answer": "BA"
+    "answer": "BA",
+    "display": "Bà"
   },
   {
     "level": 2,
-    "answer": "BANVESO"
+    "answer": "BANVESO",
+    "display": "Bán vé số"
   },
   {
     "level": 3,
-    "answer": "ANHSANG"
+    "answer": "ANHSANG",
+    "display": "Ánh sáng"
   },
   {
     "level": 4,
-    "answer": "CHUONG"
+    "answer": "CHUONG",
+    "display": "Chuông"
   },
   {
     "level": 5,
-    "answer": "BUON"
+    "answer": "BUON",
+    "display": "Buồn"
   },
   {
     "level": 6,
-    "answer": "ANHEM"
+    "answer": "ANHEM",
+    "display": "Anh em"
   },
   {
     "level": 7,
-    "answer": "BUACOM"
+    "answer": "BUACOM",
+    "display": "Bữa cơm"
   },
   {
     "level": 8,
-    "answer": "BANBAO"
+    "answer": "BANBAO",
+    "display": "Bán báo"
   },
   {
     "level": 9,
-    "answer": "GOC"
+    "answer": "GOC",
+    "display": "Góc"
   },
   {
     "level": 10,
-    "answer": "SINHNHAT"
+    "answer": "SINHNHAT",
+    "display": "Sinh nhật"
   },
   {
     "level": 11,
-    "answer": "BUONBAN"
+    "answer": "BUONBAN",
+    "display": "Buôn bán"
   },
   {
     "level": 12,
-    "answer": "BUNG"
+    "answer": "BUNG",
+    "display": "Bụng"
   },
   {
     "level": 13,
-    "answer": "CUOI"
+    "answer": "CUOI",
+    "display": "Cưỡi"
   },
   {
     "level": 14,
-    "answer": "NUT"
+    "answer": "NUT",
+    "display": "Nút"
   },
   {
     "level": 15,
-    "answer": "GIADINH"
+    "answer": "GIADINH",
+    "display": "Gia đình"
   },
   {
     "level": 16,
-    "answer": "GIAN"
+    "answer": "GIAN",
+    "display": "Giận"
   },
   {
     "level": 17,
-    "answer": "GIAOVIEN"
+    "answer": "GIAOVIEN",
+    "display": "Giáo viên"
   },
   {
     "level": 18,
-    "answer": "GIAIKHAT"
+    "answer": "GIAIKHAT",
+    "display": "Giải khát"
   },
   {
     "level": 19,
-    "answer": "CHA"
+    "answer": "CHA",
+    "display": "Cha"
   },
   {
     "level": 20,
-    "answer": "HOANTHU"
+    "answer": "HOANTHU",
+    "display": "Hoạn Thư"
   },
   {
     "level": 21,
-    "answer": "NUOCMAT"
+    "answer": "NUOCMAT",
+    "display": "Nước mắt"
   },
   {
     "level": 22,
-    "answer": "HOCSINH"
+    "answer": "HOCSINH",
+    "display": "Học sinh"
   },
   {
     "level": 23,
-    "answer": "BANG"
+    "answer": "BANG",
+    "display": "Băng"
   },
   {
     "level": 24,
-    "answer": "HAIQUAN"
+    "answer": "HAIQUAN",
+    "display": "Hải quân"
   },
   {
     "level": 25,
-    "answer": "NOM"
+    "answer": "NOM",
+    "display": "Nộm"
   },
   {
     "level": 26,
-    "answer": "LUATSU"
+    "answer": "LUATSU",
+    "display": "Luật sư"
   },
   {
     "level": 27,
-    "answer": "OM"
+    "answer": "OM",
+    "display": "Ốm"
   },
   {
     "level": 28,
-    "answer": "CAOLAU"
+    "answer": "CAOLAU",
+    "display": "Cao lầu"
   },
   {
     "level": 29,
-    "answer": "NUOCMUA"
+    "answer": "NUOCMUA",
+    "display": "Nước mưa"
   },
   {
     "level": 30,
-    "answer": "GOC"
+    "answer": "GOCVUONG",
+    "display": "Góc vuông"
   },
   {
     "level": 31,
-    "answer": "VA"
+    "answer": "VA",
+    "display": "Vá"
   },
   {
     "level": 32,
-    "answer": "PHOMAIQUE"
+    "answer": "PHOMAIQUE",
+    "display": "Phô mai que"
   },
   {
     "level": 33,
-    "answer": "VUI"
+    "answer": "VUI",
+    "display": "Vui"
   },
   {
     "level": 34,
-    "answer": "CHEMGIO"
+    "answer": "CHEMGIO",
+    "display": "Chém gió"
   },
   {
     "level": 35,
-    "answer": "BUONNGU"
+    "answer": "BUONNGU",
+    "display": "Buồn ngủ"
   },
   {
     "level": 36,
-    "answer": "BONGTOI"
+    "answer": "BONGTOI",
+    "display": "Bóng tối"
   },
   {
     "level": 37,
-    "answer": "MUCTIEU"
+    "answer": "MUCTIEU",
+    "display": "Mục tiêu"
   },
   {
     "level": 38,
-    "answer": "KIEMTRA"
+    "answer": "KIEMTRA",
+    "display": "Kiểm tra"
   },
   {
     "level": 39,
-    "answer": "ROI"
+    "answer": "ROI",
+    "display": "Rối"
   },
   {
     "level": 40,
-    "answer": "RUNG"
+    "answer": "RUNG",
+    "display": "Rung"
   },
   {
     "level": 41,
-    "answer": "TIENLEN"
+    "answer": "TIENLEN",
+    "display": "Tiến lên"
   },
   {
     "level": 42,
-    "answer": "XEPHINH"
+    "answer": "XEPHINH",
+    "display": "Xếp hình"
   },
   {
     "level": 43,
-    "answer": "BONG"
+    "answer": "BONG",
+    "display": "Bóng"
   },
   {
     "level": 44,
-    "answer": "NHANH"
+    "answer": "NHANH",
+    "display": "Nhanh"
   },
   {
     "level": 45,
-    "answer": "HOATRANG"
+    "answer": "HOATRANG",
+    "display": "Hóa trang"
   },
   {
     "level": 46,
-    "answer": "THOIGIAN"
+    "answer": "THOIGIAN",
+    "display": "Thời gian"
   },
   {
     "level": 47,
-    "answer": "LEO"
+    "answer": "LEO",
+    "display": "Leo"
+  },
+  {
+    "level": 48,
+    "answer": "TUONG",
+    "display": "Tướng"
+  },
+  {
+    "level": 49,
+    "answer": "LONGLA",
+    "display": "Lông lá"
+  },
+  {
+    "level": 50,
+    "answer": "NGUOIHAMMO",
+    "display": "Người hâm mộ"
   }
 ]
