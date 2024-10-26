@@ -27,7 +27,7 @@
       height: 25px;
       justify-content: space-between;
       align-items: center;
-      color: orangered;
+      color: #EA7353;
     }
 
     header img {
@@ -48,7 +48,7 @@
       gap: 5px;
     }
 
-    .image-container {
+    #image-container {
       width: var(--full-width);
       height: var(--full-width);
       display: grid;
@@ -109,7 +109,7 @@
     #answer div {
       width: 30px;
       height: 30px;
-      background-color: orangered;
+      background-color: #EA7353;
       text-align: center;
       color: white;
       font-size: 25px;
@@ -169,6 +169,49 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    #correct-answer {
+      width: var(--full-width);
+      height: 480px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #correct-answer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #final-answer {
+      color: #EA7353;
+    }
+
+    #next-question {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: calc(var(--full-width) + 40px);
+      background-color: turquoise;
+      height: 18%;
+      color: white;
+    }
+
+    #next-question img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    #congrats {
+      font-size: 25px;
+      color: darkturquoise;
     }
 
     #pacman {
@@ -264,7 +307,7 @@
         <img src="hint/removeLetters.jpg" id="removeLetters" onclick="removeThreeLetters()">
       </div>
     </header>
-    <div class="image-container">
+    <div id="image-container">
       <div class="image" id="image1" onclick=toggleExpand(this)>
         <img> <!-- ### FIRST PICTURE -->
       </div>
@@ -295,12 +338,25 @@
       <div></div>
       <div></div>
     </div>
-    <div id="pacmanContainer">
+    <div id="pacman-container">
+    </div>
+    <div id="correct-answer">
+      <div id="correct-answer-content">
+        <h1 id="congrats">Vô đối rồi!</h1>
+        <p>Bạn đã có đáp án đúng</p>
+        <h1 id="final-answer"></h1>
+      </div>
+      <div id="next-question">
+        <img src="hint/play.jpg" onclick="nextLevel()">
+        <p id="next-level"></p>
+      </div>
     </div>
   </div>
   <script>
     var finalAnswer;
     var level;
+    var display;
+    var totalLevels;
     //Remember the level that user is playing recently
     var cookieLevel = Number(getCookie('level'));
     var urlLevel = Number(getURLParameter('level'));
@@ -325,9 +381,11 @@
     //Fetch JSON to get level data
     fetch('data.json').then(response => response.json())
       .then(data => {
-        document.getElementById('currentLevel').innerText = `${level}/${data.length}`;
+        totalLevels = data.length;
+        document.getElementById('currentLevel').innerText = `${level}/${totalLevels}`;
         let currentLevelData = data[level - 1];
         finalAnswer = currentLevelData.answer;
+        display = currentLevelData.display;
         populateAnswer();
       })
 
@@ -497,18 +555,17 @@
           letter.style.color = 'green';
           //While displaying effect, prevent user from clicking
           letter.removeEventListener('click', handleAnswer);
-          document.querySelector(".left img").onclick = '';
           document.getElementById('openALetter').onclick = '';
           document.getElementById('removeLetters').onclick = '';
           isTimeoutExist = true;
         });
         //After effect completed, proceed to next level
         setTimeout(() => {
-          window.location.href = "inGame.html?level=" + ++level;
+          showFinalAnswer();
         }, 3000);
 
         //Set the cookie of money
-        moneyLeft += 5;
+        moneyLeft += 4;
         setCookie('money', moneyLeft);
 
         //Set the cookie of next level if user has played the current level in cookie
@@ -656,7 +713,7 @@
     function doPacmanTransition() {
       let pacman = document.createElement('div');
       pacman.id = 'pacman';
-      document.getElementById('pacmanContainer').appendChild(pacman);
+      document.getElementById('pacman-container').appendChild(pacman);
       setTimeout(() => {
         pacman.remove();
       }, 3000);
@@ -679,6 +736,24 @@
         [arr[m], arr[i]] = [arr[i], arr[m]];
       }
       return arr;
+    }
+
+    //Show correct answer
+    function showFinalAnswer() {
+      let congratsMsg = ['Tuyệt vời!', 'Vô đối rồi!!!', 'Đỉnh quá!', 'Quá đẳng cấp!!'];
+      ++level;
+      document.getElementById('image-container').style.display = 'none';
+      document.getElementById('answer').style.display = 'none';
+      document.getElementById('answer-option').style.display = 'none';
+      document.getElementById('correct-answer').style.display = 'flex';
+      document.getElementById('congrats').innerText = congratsMsg[Math.floor(Math.random() * congratsMsg.length)];
+      document.getElementById('final-answer').innerText = display;
+      document.getElementById('next-level').innerText = `${level}/${totalLevels}`;
+    }
+
+    //Go to next level
+    function nextLevel() {
+      window.location.href = "inGame.html?level=" + level;
     }
   </script>
 </body>

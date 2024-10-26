@@ -8,7 +8,7 @@
       width: 100vw;
       height: 100vh;
       margin: 0;
-      font-family: '.VnAvant','Helvetica', 'Arial';
+      font-family: '.VnAvant', 'Helvetica', 'Arial';
       user-select: none;
     }
 
@@ -38,7 +38,8 @@
       display: flex;
       height: 25px;
       justify-content: space-between;
-      color: orangered;
+      color: #EA7353;
+      ;
     }
 
     header img {
@@ -223,7 +224,7 @@
       <div id="instruction">
         <div><img src="hint/openALetter.jpg"> = +5 xu.</div>
         <div><img src="hint/removeLetters.jpg"> = +10 xu.</div>
-        <div><img src="hint/money.jpg"> = +30 xu</div>
+        <div><img src="hint/money.jpg"> = +20 xu</div>
         <div><img src="hint/goodLuck.jpg"> = May mắn lần sau!</div>
       </div>
     </div>
@@ -283,7 +284,9 @@
     }
 
     async function spin() {
+      //Decrement the number of spins left
       --spinsLeft;
+      //Disable the button "Spin !" for 3 seconds
       let button = document.querySelector("#spin");
       button.disabled = true;
       if (spinsLeft >= 0) {
@@ -291,12 +294,15 @@
           button.disabled = false
         }, 3000 + 3 * 300);
       } else {
+        //Out of spins
         document.getElementById('spinsLeft').innerText = 'Bạn đã hết số lượt quay!';
         button.style.backgroundColor = '#25C7BF89';
         return;
       }
+      //Update the screen
       document.getElementById('spinsLeft').innerText = `Số lần quay còn lại: ${spinsLeft}`;
       init(false);
+      //Do the spin effect
       for (const door of doors) {
         const boxes = door.querySelector(".boxes");
         boxes.style.transform = "translateY(0)";
@@ -304,6 +310,7 @@
       }
     }
 
+    //Initializes the spin elements
     function init(firstInit = true) {
       let duration = 3;
       for (const door of doors) {
@@ -379,7 +386,7 @@
             moneyLeft += 10;
             break;
           case 'money':
-            moneyLeft += 30;
+            moneyLeft += 20;
             break;
         }
       }
