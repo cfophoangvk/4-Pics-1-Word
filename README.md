@@ -14,6 +14,6 @@
 </p>
 <h3>NO FRAMEWORK INCLUDED!</h3>
 <h3>This website is deployed on Vercel!</h3>
-- Visit <a href="https://cfophoangvk.vercel.app">here</a> to see the result!<br>
+- Visit <a href="https://4-pics-1-word.vercel.app/">here</a> to see the result!<br>
 - There are 50 questions in total, and it is expanding more!<br>
 - The mobile version is in process, so coming soon!
