@@ -102,15 +102,20 @@
     }
 
     /* FOR MOBILE */
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 992px) {
       #container {
         width: 100vw;
         height: 100vh;
         font-size: 3em;
       }
 
+      .main{
+        width: 80vw;
+        max-width: 450px;
+      }
+
       .main img {
-        max-height: 450px;
+        max-width: 100%;
       }
 
       .navigator {
@@ -118,6 +123,7 @@
       }
 
       .navigator img {
+        max-width: 50px;
         width: calc(100vw / 15);
         min-width: 30px;
       }

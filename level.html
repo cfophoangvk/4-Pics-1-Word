@@ -93,21 +93,27 @@
     }
 
     /* FOR MOBILE */
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 992px) {
       #container {
         width: 100vw;
         height: 100vh;
-        font-size: 1.3em;
+        font-size: 1.2em;
         padding: 0;
+      }
+
+      img {
+        max-width: 50px;
+        width: calc(100vw / 15);
+        min-width: 20px;
       }
 
       header {
         width: auto;
         margin-inline: 20px;
-        margin-top: 13px;
+        margin-top: 3%;
       }
 
-      header img{
+      header img {
         width: calc(100vw / 20);
         min-width: 30px;
       }
@@ -115,27 +121,13 @@
       .levels {
         width: auto;
         margin-inline: 10px;
-        column-gap: 5px;
-        row-gap: 15px;
+        column-gap: 3vw;
       }
 
       .level {
-        margin-inline: 5px;
-        padding: 4px;
         font-size: 1em;
-      }
-
-      .navigator {
-        gap: 15px;
-      }
-
-      .navigator img {
-        width: 80px;
-      }
-
-      .back img{
-        width: calc(100vw / 16);
-        min-width: 30px;
+        padding-block: 6px;
+        margin-inline: 10%;
       }
     }
   </style>

@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.5">
   <link rel="icon" type="image/jpg" href="favicon.ico">
   <style>
     :root {
@@ -379,7 +380,7 @@
     } else {
       if (!urlLevel) {
         level = cookieLevel;
-      } else if (urlLevel >= 0 && urlLevel <= cookieLevel) {
+      } else if (urlLevel > 0 && urlLevel <= cookieLevel) {
         level = urlLevel;
       } else {
         window.location.href = 'inGame.html'
