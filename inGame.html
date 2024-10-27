@@ -4,6 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.5">
   <link rel="icon" type="image/jpg" href="favicon.ico">
+  <title>4 Pics 1 Word</title>
   <style>
     :root {
       --full-width: 320px;
@@ -303,7 +304,6 @@
       }
     }
   </style>
-  <title>4 Pics 1 Word</title>
 </head>
 
 <body>
@@ -582,6 +582,9 @@
         moneyLeft += 4;
         setCookie('money', moneyLeft);
 
+        //Do the money effect
+        countUp();
+
         //Set the cookie of next level if user has played the current level in cookie
         if (!cookieLevel) setCookie('level', 2)
         else if (level === cookieLevel) {
@@ -750,6 +753,16 @@
         [arr[m], arr[i]] = [arr[i], arr[m]];
       }
       return arr;
+    }
+
+    //Count up the money effect when correct
+    function countUp() {
+      let moneyText = document.getElementById('money').innerText;
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => {
+          document.getElementById('money').innerText = ++moneyText;
+        }, i * 200 + 700);
+      }
     }
 
     //Show correct answer
