@@ -2,8 +2,8 @@
 <h3 align="center">A passionated .NET developer</h3>
 <p align="center">(although this project is NOT about .NET)</p>
 <h4 align="center">About this project:</h4>
-- 🔭 This project has started for <b>5</b> days. (2024/10/22 - ...)<br>
-- Number of LOCs: <b>1,556</b> (Upgrading)<br>
+- 🔭 This project has started for <b>6</b> days. (2024/10/22 - ...)<br>
+- Number of LOCs: <b>1,591</b> (Upgrading)<br>
 - 📫 Contact me at **hieuthien20042004@gmail.com**<br>
 
 <h3 align="left">This project is VERY lite, as it is made of:</h3>
