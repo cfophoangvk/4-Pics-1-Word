@@ -248,5 +248,105 @@
     "level": 50,
     "answer": "NGUOIHAMMO",
     "display": "Người hâm mộ"
+  },
+  {
+    "level": 51,
+    "answer": "TRUYENTRANH",
+    "display": "Truyện tranh"
+  },
+  {
+    "level": 52,
+    "answer": "DIEN",
+    "display": "Điện"
+  },
+  {
+    "level": 53,
+    "answer": "TRANGNGUYEN",
+    "display": "Trạng nguyên"
+  },
+  {
+    "level": 54,
+    "answer": "HONNHAN",
+    "display": "Hôn nhân"
+  },
+  {
+    "level": 55,
+    "answer": "DAIDUONG",
+    "display": "Đại dương"
+  },
+  {
+    "level": 56,
+    "answer": "COTICH",
+    "display": "Cổ tích"
+  },
+  {
+    "level": 57,
+    "answer": "CONTRUNG",
+    "display": "Côn trùng"
+  },
+  {
+    "level": 58,
+    "answer": "BAY",
+    "display": "Bẫy"
+  },
+  {
+    "level": 59,
+    "answer": "AMNHAC",
+    "display": "Âm nhạc"
+  },
+  {
+    "level": 60,
+    "answer": "TIEUPHU",
+    "display": "Tiều phu"
+  },
+  {
+    "level": 61,
+    "answer": "DINHDUONG",
+    "display": "Dinh dưỡng"
+  },
+  {
+    "level": 62,
+    "answer": "BIMAT",
+    "display": "Bí mật"
+  },
+  {
+    "level": 63,
+    "answer": "THIENTAI",
+    "display": "Thiên tai"
+  },
+  {
+    "level": 64,
+    "answer": "HANHTINH",
+    "display": "Hành tinh"
+  },
+  {
+    "level": 65,
+    "answer": "BOSAT",
+    "display": "Bò sát"
+  },
+  {
+    "level": 66,
+    "answer": "GOIBANHCHUNG",
+    "display": "Gói bánh chưng"
+  },
+  {
+    "level": 67,
+    "answer": "Mạng",
+    "display": "MANG"
+  },
+  {
+    "level": 68,
+    "answer": "NGUONG",
+    "display": "Ngư ông"
+  },
+  {
+    "level": 69,
+    "answer": "THIEN",
+    "display": "Thiền"
+  },
+  {
+    "level": 70,
+    "answer": "THOITIENSU",
+    "display": "Thời tiền sử"
   }
 ]
