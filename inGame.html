@@ -587,6 +587,10 @@
           showFinalAnswer();
         }, 3000);
 
+        //Reset the cookie of money if user go back from Lucky Gift page
+        moneyLeft = Number(getCookie('money'));
+        document.getElementById('money').innerText = moneyLeft;
+        
         //Set the cookie of money
         moneyLeft += 4;
         setCookie('money', moneyLeft);
