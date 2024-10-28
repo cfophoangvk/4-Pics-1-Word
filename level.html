@@ -128,7 +128,9 @@
           totalLevels = data.length;
           totalPages = Math.ceil(totalLevels / 42);
           currentPage = getURLParameter('page') ? Number(getURLParameter('page')) : 1;
-          if (totalPages < currentPage) {
+          if (!currentPage) {
+            window.location.href = "level.html?page=1";
+          } else if (totalPages < currentPage || currentPage < 1) {
             window.location.href = "level.html?page=" + totalPages;
           } else {
             document.querySelector('.center').innerText = `${currentPage}/${totalPages}`;

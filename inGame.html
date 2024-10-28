@@ -8,6 +8,8 @@
   <style>
     :root {
       touch-action: none;
+      width: 100vw;
+      height: 100vh;
       --full-width: 320px;
       --gap: 5px;
       font-family: Helvetica, Arial;
@@ -44,7 +46,7 @@
 
     header p {
       margin: 0;
-      font-size: 13px;
+      font-size: 15px;
     }
 
     header .right {
@@ -93,7 +95,7 @@
     }
 
     .image.expanded {
-      transform: scale(2.02);
+      transform: scale(2.03);
       z-index: 1;
     }
 
@@ -174,6 +176,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    #answer-option div:active {
+      font-size: 28px;
     }
 
     #correct-answer {
@@ -318,7 +324,7 @@
       <div class="right">
         <img src="hint/money.jpg" style="cursor: auto;">
         <p id="money" style="margin-right: 7px;"></p>
-        <img src="hint/openALetter.jpg" id="openALetter" onclick="revealALetter()">
+        <img src="hint/openALetter.jpg" id="openALetter" onclick="revealLetter()">
         <img src="hint/removeLetters.jpg" id="removeLetters" onclick="removeThreeLetters()">
       </div>
     </header>
@@ -509,6 +515,7 @@
     }
 
     //Insert a letter from answer options to answer boxes
+    var clickSound = new Audio('click.m4a');
     function insertLetter(option) {
       let answerLetters = document.querySelectorAll("#answer div");
       let cur = 0;
@@ -516,6 +523,7 @@
         cur++;
       }
       if (cur >= answerLetters.length) return;
+      if (option.innerText !== '') clickSound.play();
       answerLetters[cur].innerText = option.innerText;
       option.innerText = '';
       if (Array.from(answerLetters).every(letter => letter.innerText !== '')) {
@@ -612,7 +620,7 @@
     }
 
     //Reveal a letter.
-    function revealALetter() {
+    function revealLetter() {
       //Confirmation
       if (!confirm('Bạn có muốn mở 1 chữ cái? (40 xu)')) return;
       //If money is less than 40, do not open
@@ -667,6 +675,7 @@
     }
 
     //Remove three letters
+    var eat = new Audio('eat.m4a');
     function removeThreeLetters() {
       //Confirmation
       if (!confirm('Bạn có muốn xóa bớt các chữ cái? (60 xu)')) return;
@@ -710,6 +719,7 @@
       setCookie('money', moneyLeft);
       document.getElementById('money').innerText = moneyLeft;
       //Set the pacman effect
+      eat.play();
       doPacmanTransition();
       //Shuffle them then get the first 3 letters
       shuffle(indexOfWrongLetters);
@@ -729,11 +739,21 @@
 
     //Pacman transition
     function doPacmanTransition() {
+      //Disable buttons
+      document.getElementById('openALetter').onclick = '';
+      document.getElementById('removeLetters').onclick = '';
+      document.querySelectorAll('#answer-option div').forEach(option => option.removeEventListener('click', handleOption));
+
       let pacman = document.createElement('div');
       pacman.id = 'pacman';
       document.getElementById('pacman-container').appendChild(pacman);
+
+      //Enable buttons again and remove pacman object after 3 seconds
       setTimeout(() => {
         pacman.remove();
+        document.getElementById('openALetter').onclick = revealLetter;
+        document.getElementById('removeLetters').onclick = removeThreeLetters;
+        document.querySelectorAll('#answer-option div').forEach(option => option.addEventListener('click', handleOption));
       }, 3000);
     }
 
@@ -768,7 +788,7 @@
 
     //Show correct answer
     function showFinalAnswer() {
-      let congratsMsg = ['Tuyệt vời!', 'Vô đối rồi!!!', 'Đỉnh quá!', 'Quá đẳng cấp!!'];
+      let congratsMsg = ['Tuyệt vời!', 'Vô đối rồi!!!', 'Đỉnh quá!', 'Nhà vô địch chính là bạn!!'];
       ++level;
       document.getElementById('image-container').style.display = 'none';
       document.getElementById('answer').style.display = 'none';

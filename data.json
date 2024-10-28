@@ -348,5 +348,105 @@
     "level": 70,
     "answer": "THOITIENSU",
     "display": "Thời tiền sử"
+  },
+  {
+    "level": 71,
+    "answer": "GIAOTHONG",
+    "display": "Giao thông"
+  },
+  {
+    "level": 72,
+    "answer": "NUOCMAM",
+    "display": "Nước mắm"
+  },
+  {
+    "level": 73,
+    "answer": "TUTHIEN",
+    "display": "Từ thiện"
+  },
+  {
+    "level": 74,
+    "answer": "THAONGUYEN",
+    "display": "Thảo nguyên"
+  },
+  {
+    "level": 75,
+    "answer": "CANGTHANG",
+    "display": "Căng thẳng"
+  },
+  {
+    "level": 76,
+    "answer": "TROCHOIDANGIAN",
+    "display": "Trò chơi dân gian"
+  },
+  {
+    "level": 77,
+    "answer": "THIENNHIEN",
+    "display": "Thiên nhiên"
+  },
+  {
+    "level": 78,
+    "answer": "TINHMAUTU",
+    "display": "Tình mẫu tử"
+  },
+  {
+    "level": 79,
+    "answer": "ACMONG",
+    "display": "Ác mộng"
+  },
+  {
+    "level": 80,
+    "answer": "CHIENTRANH",
+    "display": "Chiến tranh"
+  },
+  {
+    "level": 81,
+    "answer": "DANCA",
+    "display": "Dân ca"
+  },
+  {
+    "level": 82,
+    "answer": "GIONGHATVIET",
+    "display": "Giọng hát Việt"
+  },
+  {
+    "level": 83,
+    "answer": "SONGNUOC",
+    "display": "Sông nước"
+  },
+  {
+    "level": 84,
+    "answer": "THUE",
+    "display": "Thuế"
+  },
+  {
+    "level": 85,
+    "answer": "UOCMO",
+    "display": "Ước mơ"
+  },
+  {
+    "level": 86,
+    "answer": "TAM",
+    "display": "Tám"
+  },
+  {
+    "level": 87,
+    "answer": "PHOCO",
+    "display": "Phố cổ"
+  },
+  {
+    "level": 88,
+    "answer": "PHANTHUONG",
+    "display": "Phần thưởng"
+  },
+  {
+    "level": 89,
+    "answer": "HAIVL",
+    "display": "Hài VL"
+  },
+  {
+    "level": 90,
+    "answer": "GIASUC",
+    "display": "Gia súc"
   }
 ]
