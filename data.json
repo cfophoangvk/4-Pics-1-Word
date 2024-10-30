@@ -331,8 +331,8 @@
   },
   {
     "level": 67,
-    "answer": "Mạng",
-    "display": "MANG"
+    "answer": "MANG",
+    "display": "Mạng"
   },
   {
     "level": 68,
@@ -448,5 +448,55 @@
     "level": 90,
     "answer": "GIASUC",
     "display": "Gia súc"
+  },
+  {
+    "level": 91,
+    "answer": "DIDONG",
+    "display": "Di động"
+  },
+  {
+    "level": 92,
+    "answer": "AMTHUC",
+    "display": "Ẩm thực"
+  },
+  {
+    "level": 93,
+    "answer": "DOI",
+    "display": "Đôi"
+  },
+  {
+    "level": 94,
+    "answer": "KIMLOAI",
+    "display": "Kim loại"
+  },
+  {
+    "level": 95,
+    "answer": "THANHNIEN",
+    "display": "Thanh niên"
+  },
+  {
+    "level": 96,
+    "answer": "NGHIEMTUC",
+    "display": "Nghiêm túc"
+  },
+  {
+    "level": 97,
+    "answer": "THOITIET",
+    "display": "Thời tiết"
+  },
+  {
+    "level": 98,
+    "answer": "DUA",
+    "display": "Dưa"
+  },
+  {
+    "level": 99,
+    "answer": "CHUATE",
+    "display": "Chúa tể"
+  },
+  {
+    "level": 100,
+    "answer": "CUAKINH",
+    "display": "Cửa kính"
   }
 ]

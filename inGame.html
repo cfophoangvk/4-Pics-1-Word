@@ -463,7 +463,7 @@
       //Populate the answer letters to the answer option
       let options = document.querySelectorAll("#answer-option div");
       let set = new Set();
-      while (set.size <= finalAnswer.length) {
+      while (set.size < finalAnswer.length) {
         set.add(Math.floor(Math.random() * options.length));
       }
       let setIterator = set.values();
