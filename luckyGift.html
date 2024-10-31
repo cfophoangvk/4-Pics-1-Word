@@ -294,9 +294,13 @@
       //Disable the button "Spin !" for 3 seconds
       let button = document.querySelector("#spin");
       button.disabled = true;
+      document.querySelector('.left img').onclick = '';
       if (spinsLeft >= 0) {
         setTimeout(() => {
-          button.disabled = false
+          button.disabled = false;
+          document.querySelector('.left img').addEventListener('click', () => {
+            history.back();
+          })
         }, 3000 + 3 * 300);
       } else {
         //Out of spins

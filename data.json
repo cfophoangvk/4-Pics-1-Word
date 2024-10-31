@@ -498,5 +498,105 @@
     "level": 100,
     "answer": "CUAKINH",
     "display": "Cửa kính"
+  },
+  {
+    "level": 101,
+    "answer": "DEO",
+    "display": "Dẻo"
+  },
+  {
+    "level": 102,
+    "answer": "THANHCONG",
+    "display": "Thành công"
+  },
+  {
+    "level": 103,
+    "answer": "DULICH",
+    "display": "Du lịch"
+  },
+  {
+    "level": 104,
+    "answer": "NGHIEN",
+    "display": "Nghiện"
+  },
+  {
+    "level": 105,
+    "answer": "THIENDUONG",
+    "display": "Thiên đường"
+  },
+  {
+    "level": 106,
+    "answer": "TRUNGTHANH",
+    "display": "Trung thành"
+  },
+  {
+    "level": 107,
+    "answer": "DUONGDI",
+    "display": "Đường đi"
+  },
+  {
+    "level": 108,
+    "answer": "VIETNAM",
+    "display": "Việt Nam"
+  },
+  {
+    "level": 109,
+    "answer": "CONGNGHE",
+    "display": "Công nghệ"
+  },
+  {
+    "level": 110,
+    "answer": "TUVI",
+    "display": "Tử vi"
+  },
+  {
+    "level": 111,
+    "answer": "COHON",
+    "display": "Cô hồn"
+  },
+  {
+    "level": 112,
+    "answer": "NGHIAVUQUANSU",
+    "display": "Nghĩa vụ quân sự"
+  },
+  {
+    "level": 113,
+    "answer": "TUTHAN",
+    "display": "Tử thần"
+  },
+  {
+    "level": 114,
+    "answer": "CHUNGKHOAN",
+    "display": "Chứng khoán"
+  },
+  {
+    "level": 115,
+    "answer": "CAMKYTHIHOA",
+    "display": "Cầm kỳ thi họa"
+  },
+  {
+    "level": 116,
+    "answer": "CHIEU",
+    "display": "Chiếu"
+  },
+  {
+    "level": 117,
+    "answer": "DITRUYEN",
+    "display": "Di truyền"
+  },
+  {
+    "level": 118,
+    "answer": "THATNGHIEP",
+    "display": "Thất nghiệp"
+  },
+  {
+    "level": 119,
+    "answer": "PHAHOAI",
+    "display": "Phá hoại"
+  },
+  {
+    "level": 120,
+    "answer": "LA",
+    "display": "La"
   }
 ]
