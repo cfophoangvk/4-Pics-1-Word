@@ -598,5 +598,55 @@
     "level": 120,
     "answer": "LA",
     "display": "La"
+  },
+  {
+    "level": 121,
+    "answer": "VANDONGVIEN",
+    "display": "Vận động viên"
+  },
+  {
+    "level": 122,
+    "answer": "CUA",
+    "display": "Cua"
+  },
+  {
+    "level": 123,
+    "answer": "GAMETHU",
+    "display": "Game thủ"
+  },
+  {
+    "level": 124,
+    "answer": "SAN",
+    "display": "Săn"
+  },
+  {
+    "level": 125,
+    "answer": "THAODUOC",
+    "display": "Thảo dược"
+  },
+  {
+    "level": 126,
+    "answer": "LANHDAO",
+    "display": "Lãnh đạo"
+  },
+  {
+    "level": 127,
+    "answer": "TUSAC",
+    "display": "Tứ sắc"
+  },
+  {
+    "level": 128,
+    "answer": "NOITRO",
+    "display": "Nội trợ"
+  },
+  {
+    "level": 129,
+    "answer": "DA",
+    "display": "Đá"
+  },
+  {
+    "level": 130,
+    "answer": "BAOHIEM",
+    "display": "Bảo hiểm"
   }
 ]
