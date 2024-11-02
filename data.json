@@ -648,5 +648,55 @@
     "level": 130,
     "answer": "BAOHIEM",
     "display": "Bảo hiểm"
+  },
+  {
+    "level": 131,
+    "answer": "DETHUONG",
+    "display": "Dễ thương"
+  },
+  {
+    "level": 132,
+    "answer": "TIENGVIET",
+    "display": "Tiếng Việt"
+  },
+  {
+    "level": 133,
+    "answer": "TIEUCHUAN",
+    "display": "Tiêu chuẩn"
+  },
+  {
+    "level": 134,
+    "answer": "LANGPHI",
+    "display": "Lãng phí"
+  },
+  {
+    "level": 135,
+    "answer": "PHEPTHUAT",
+    "display": "Phép thuật"
+  },
+  {
+    "level": 136,
+    "answer": "LANGBIANG",
+    "display": "Lang Biang"
+  },
+  {
+    "level": 137,
+    "answer": "TUOITHO",
+    "display": "Tuổi thơ"
+  },
+  {
+    "level": 138,
+    "answer": "ANVAT",
+    "display": "Ăn vặt"
+  },
+  {
+    "level": 139,
+    "answer": "CODON",
+    "display": "Cô đơn"
+  },
+  {
+    "level": 140,
+    "answer": "HIEPSI",
+    "display": "Hiệp sĩ"
   }
 ]
