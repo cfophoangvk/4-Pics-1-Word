@@ -698,5 +698,55 @@
     "level": 140,
     "answer": "HIEPSI",
     "display": "Hiệp sĩ"
+  },
+  {
+    "level": 141,
+    "answer": "CHAUA",
+    "display": "Châu Á"
+  },
+  {
+    "level": 142,
+    "answer": "LEHOI",
+    "display": "Lễ hội"
+  },
+  {
+    "level": 143,
+    "answer": "DOCTHAN",
+    "display": "Độc thân"
+  },
+  {
+    "level": 144,
+    "answer": "NGUOC",
+    "display": "Ngược"
+  },
+  {
+    "level": 145,
+    "answer": "KHOAHOC",
+    "display": "Khoa học"
+  },
+  {
+    "level": 146,
+    "answer": "NHIEU",
+    "display": "Nhiều"
+  },
+  {
+    "level": 147,
+    "answer": "MYPHAM",
+    "display": "Mỹ phẩm"
+  },
+  {
+    "level": 148,
+    "answer": "QUAKHU",
+    "display": "Quá khứ"
+  },
+  {
+    "level": 149,
+    "answer": "PHASAN",
+    "display": "Phá sản"
+  },
+  {
+    "level": 150,
+    "answer": "SIEUTHI",
+    "display": "Siêu thị"
   }
 ]
