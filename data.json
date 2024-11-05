@@ -748,5 +748,55 @@
     "level": 150,
     "answer": "SIEUTHI",
     "display": "Siêu thị"
+  },
+  {
+    "level": 151,
+    "answer": "THACH",
+    "display": "Thạch"
+  },
+  {
+    "level": 152,
+    "answer": "BANBE",
+    "display": "Bạn bè"
+  },
+  {
+    "level": 153,
+    "answer": "CHANDUNG",
+    "display": "Chân dung"
+  },
+  {
+    "level": 154,
+    "answer": "DIENTU",
+    "display": "Điện tử"
+  },
+  {
+    "level": 155,
+    "answer": "HANHPHUC",
+    "display": "Hạnh phúc"
+  },
+  {
+    "level": 156,
+    "answer": "KYLUC",
+    "display": "Kỷ lục"
+  },
+  {
+    "level": 157,
+    "answer": "LUADAO",
+    "display": "Lừa đảo"
+  },
+  {
+    "level": 158,
+    "answer": "NONNUOC",
+    "display": "Non nước"
+  },
+  {
+    "level": 159,
+    "answer": "ONGTRUM",
+    "display": "Ông trùm"
+  },
+  {
+    "level": 160,
+    "answer": "SIENGNANG",
+    "display": "Siêng năng"
   }
 ]
