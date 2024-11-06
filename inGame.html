@@ -805,6 +805,10 @@
 
     //Go to next level
     function nextLevel() {
+      if (level > totalLevels) {
+        alert('Bạn đã hoàn thành tất cả câu hỏi. Chúng tôi sẽ cập nhật thêm câu hỏi trong thời gian sớm nhất.');
+        return;
+      }
       window.location.href = "inGame.html?level=" + level;
     }
   </script>
