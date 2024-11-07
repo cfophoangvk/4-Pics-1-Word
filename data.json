@@ -798,5 +798,55 @@
     "level": 160,
     "answer": "SIENGNANG",
     "display": "Siêng năng"
+  },
+  {
+    "level": 161,
+    "answer": "VIAHE",
+    "display": "Vỉa hè"
+  },
+  {
+    "level": 162,
+    "answer": "TRUNGTHU",
+    "display": "Trung thu"
+  },
+  {
+    "level": 163,
+    "answer": "XAHOI",
+    "display": "Xã hội"
+  },
+  {
+    "level": 164,
+    "answer": "CO",
+    "display": "Cổ"
+  },
+  {
+    "level": 165,
+    "answer": "CHUONGNGAIVAT",
+    "display": "Chướng ngại vật"
+  },
+  {
+    "level": 166,
+    "answer": "HALOI",
+    "display": "Hà Lội"
+  },
+  {
+    "level": 167,
+    "answer": "BOSUUTAP",
+    "display": "Bộ sưu tập"
+  },
+  {
+    "level": 168,
+    "answer": "PHATTRIEN",
+    "display": "Phát triển"
+  },
+  {
+    "level": 169,
+    "answer": "VOGIACU",
+    "display": "Vô gia cư"
+  },
+  {
+    "level": 170,
+    "answer": "THOISU",
+    "display": "Thời sự"
   }
 ]
