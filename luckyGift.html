@@ -228,8 +228,10 @@
       <button onclick="hideDialog()">X</button>
       <div id="instruction">
         <div><img src="hint/openALetter.jpg"> = +5 xu.</div>
-        <div><img src="hint/removeLetters.jpg"> = +10 xu.</div>
-        <div><img src="hint/money.jpg"> = +20 xu</div>
+        <div><img src="hint/removeLetters.jpg"> = +8 xu.</div>
+        <div><img src="hint/moneyBronze.jpg"> = +10 xu</div>
+        <div><img src="hint/moneySilver.jpg"> = +20 xu</div>
+        <div><img src="hint/moneyGold.jpg"> = +50 xu</div>
         <div><img src="hint/goodLuck.jpg"> = May mắn lần sau!</div>
       </div>
     </div>
@@ -240,14 +242,17 @@
       "openALetter",
       "openALetter",
       "openALetter",
-      "openALetter",
       "removeLetters",
       "removeLetters",
       "removeLetters",
-      "removeLetters",
-      "money",
-      "money",
-      "money",
+      "moneyGold",
+      "moneySilver",
+      "moneySilver",
+      "moneyBronze",
+      "moneyBronze",
+      "moneyBronze",
+      "moneyBronze",
+      "goodLuck",
       "goodLuck",
       "goodLuck",
       "goodLuck",
@@ -392,10 +397,16 @@
             moneyLeft += 5;
             break;
           case 'removeLetters':
+            moneyLeft += 8;
+            break;
+          case 'moneyBronze':
             moneyLeft += 10;
             break;
-          case 'money':
+          case 'moneySilver':
             moneyLeft += 20;
+            break;
+          case 'moneyGold':
+            moneyLeft += 50;
             break;
         }
       }

@@ -515,7 +515,7 @@
     }
 
     //Insert a letter from answer options to answer boxes
-    var clickSound = new Audio('click.m4a');
+    var clickSound = new Audio('click.mp3');
     function insertLetter(option) {
       let answerLetters = document.querySelectorAll("#answer div");
       let cur = 0;
@@ -532,6 +532,7 @@
     }
 
     //Remove a letter from prompt answer to answer options
+    var removeSound = new Audio('remove.mp3');
     function removeLetter(answer) {
       let optionLetters = document.querySelectorAll("#answer-option div");
       let cur = 0;
@@ -540,7 +541,8 @@
       }
       if (cur >= optionLetters.length) return;
       optionLetters[cur].innerText = answer.innerText;
-      answer.innerText = ''
+      answer.innerText = '';
+      removeSound.play();
     }
 
     //Clear out the style in answer boxes
@@ -590,7 +592,7 @@
         //Reset the cookie of money if user go back from Lucky Gift page
         moneyLeft = Number(getCookie('money'));
         document.getElementById('money').innerText = moneyLeft;
-        
+
         //Set the cookie of money
         moneyLeft += 4;
         setCookie('money', moneyLeft);
@@ -792,7 +794,7 @@
 
     //Show correct answer
     function showFinalAnswer() {
-      let congratsMsg = ['Tuyệt vời!', 'Vô đối rồi!!!', 'Đỉnh quá!', 'Nhà vô địch chính là bạn!!'];
+      let congratsMsg = ['Bạn quá thông minh và nguy hiểm.', 'Nhà vô địch chính là bạn.', 'Tuyệt vời!', 'Thông minh vô đối.', 'Tôi thích bạn rồi đấy.', 'Có cần thông minh quá vậy không?', 'Nhà thông thái của năm.', 'Thánh đoán rồi!!!', 'IQ của bạn vượt quá 500 rồi.', 'Tại hạ khâm phục!', 'Bạn có kiến thức quá uyên thâm.', 'Đẳng cấp vượt trội', 'Trí tuệ siêu đẳng.', 'Vô đối rồi!!!', 'Bạn chắc chắn thông minh hơn học sinh lớp 5!!!', 'Chúng tôi tự hào về bạn!!!', 'Thật là không tưởng.', 'Bạn suy nghĩ thật chu đáo.', 'Bạn đúng là thiên tài.', 'Einstein cũng cúi đầu trước bạn!!!'];
       ++level;
       document.getElementById('image-container').style.display = 'none';
       document.getElementById('answer').style.display = 'none';
