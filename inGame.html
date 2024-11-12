@@ -96,11 +96,6 @@
 
     .image.expanded {
       transform: scale(2.03);
-      z-index: 1;
-    }
-
-    .image:hover {
-      z-index: 1;
     }
 
     #answer {
@@ -223,6 +218,7 @@
     #congrats {
       font-size: 25px;
       color: darkturquoise;
+      text-align: center;
     }
 
     #pacman {
@@ -317,8 +313,8 @@
   <div class="container">
     <header>
       <div class="left">
-        <img src="hint/back.jpg" style="cursor: pointer" onclick="window.location.href='level.html'">
-        <img src="hint/lucky.jpg" onclick="window.location.href='luckyGift.html'">
+        <img src="hint/back.jpg" style="cursor: pointer" onclick="redirect('level.html')">
+        <img src="hint/lucky.jpg" onclick="redirect('luckyGift.html')">
       </div>
       <p id="currentLevel"></p>
       <div class="right">
@@ -381,15 +377,17 @@
     //Remember the level that user is playing recently
     var cookieLevel = Number(getCookie('level'));
     var urlLevel = Number(getURLParameter('level'));
+    //Play audio when tapping
+    var tap = getCookie('sound') === 'true' ? new Audio('tap.mp3') : null;
     //Process the level stored in cookie vs in URL parameter
-    if (!cookieLevel) {
+    if (!cookieLevel) { //First time playing => Level 1
       level = 1
     } else {
-      if (!urlLevel) {
+      if (!urlLevel) { //No level specified => Latest played level
         level = cookieLevel;
-      } else if (urlLevel > 0 && urlLevel <= cookieLevel) {
+      } else if (urlLevel > 0 && urlLevel <= cookieLevel) { //Current level is lower than the latest played level => Level specified
         level = urlLevel;
-      } else {
+      } else { //Invalid query parameter or level is <= 0 => Latest played level
         window.location.href = 'inGame.html'
       }
     }
@@ -403,6 +401,12 @@
     fetch('data.json').then(response => response.json())
       .then(data => {
         totalLevels = data.length;
+
+        //Out of available levels but user still input the next level => Redirect to the level menu
+        if (level > totalLevels) {
+          window.location.href = 'level.html'
+        }
+
         document.getElementById('currentLevel').innerText = `${level}/${totalLevels}`;
         let currentLevelData = data[level - 1];
         finalAnswer = currentLevelData.answer;
@@ -507,15 +511,31 @@
     function toggleExpand(element) {
       const isExpanded = element.classList.contains("expanded");
 
-      document.querySelectorAll('.image').forEach(item => item.classList.remove('expanded'));
-
       if (!isExpanded) {
+        element.style.zIndex = 1;
         element.classList.add("expanded");
+      } else {
+        element.classList.remove("expanded");
       }
     }
 
+    //Set z-index for image when toggling
+    var images = document.getElementsByClassName('image');
+    Array.from(images).forEach(image => {
+      image.addEventListener('transitionstart', function () {
+        if (image.classList.contains('expanded')) {
+          image.style.zIndex = 1;
+        }
+      })
+      image.addEventListener('transitionend', function () {
+        if (!image.classList.contains('expanded')) {
+          image.style.zIndex = '';
+        }
+      })
+    })
+
     //Insert a letter from answer options to answer boxes
-    var clickSound = new Audio('click.mp3');
+    var clickSound = getCookie('sound') === 'true' ? new Audio('click.mp3') : null;
     function insertLetter(option) {
       let answerLetters = document.querySelectorAll("#answer div");
       let cur = 0;
@@ -523,7 +543,7 @@
         cur++;
       }
       if (cur >= answerLetters.length) return;
-      if (option.innerText !== '') clickSound.play();
+      if (option.innerText !== '' && clickSound) clickSound.play();
       answerLetters[cur].innerText = option.innerText;
       option.innerText = '';
       if (Array.from(answerLetters).every(letter => letter.innerText !== '')) {
@@ -532,7 +552,7 @@
     }
 
     //Remove a letter from prompt answer to answer options
-    var removeSound = new Audio('remove.mp3');
+    var removeSound = getCookie('sound') === 'true' ? new Audio('remove.mp3') : null;
     function removeLetter(answer) {
       let optionLetters = document.querySelectorAll("#answer-option div");
       let cur = 0;
@@ -542,7 +562,7 @@
       if (cur >= optionLetters.length) return;
       optionLetters[cur].innerText = answer.innerText;
       answer.innerText = '';
-      removeSound.play();
+      if (removeSound) removeSound.play();
     }
 
     //Clear out the style in answer boxes
@@ -557,8 +577,8 @@
     }
 
     //Check the answer
-    var rightSound = new Audio('correct.m4a');
-    var wrongSound = new Audio('wrong.m4a');
+    var rightSound = getCookie('sound') === 'true' ? new Audio('correct.m4a') : null;;
+    var wrongSound = getCookie('sound') === 'true' ? new Audio('wrong.m4a') : null;;
     let timeOutFunction;
     let isTimeoutExist = false;
     function checkAnswer() {
@@ -568,7 +588,7 @@
       })
       if (result === finalAnswer) { //Proceed to next level
         //Play the sound
-        rightSound.play();
+        if (rightSound) rightSound.play();
         document.querySelectorAll("#answer div").forEach(letter => {
           //Clear the effect of wrong if exist
           if (isTimeoutExist) {
@@ -607,9 +627,12 @@
         }
       } else { //Try again
         //Replay the sound
-        wrongSound.pause();
-        wrongSound.currentTime = 0;
-        wrongSound.play();
+        if (wrongSound) {
+          wrongSound.pause();
+          wrongSound.currentTime = 0;
+          wrongSound.play();
+        }
+
         if (isTimeoutExist) {
           clearTimeout(timeOutFunction);
           isTimeoutExist = false;
@@ -627,6 +650,8 @@
 
     //Reveal a letter.
     function revealLetter() {
+      //Play tapping sound
+      if (tap) tap.play();
       //Confirmation
       if (!confirm('Bạn có muốn mở 1 chữ cái? (40 xu)')) return;
       //If money is less than 40, do not open
@@ -681,8 +706,10 @@
     }
 
     //Remove three letters
-    var eat = new Audio('eat.m4a');
+    var eat = getCookie('sound') === 'true' ? new Audio('eat.m4a') : null;
     function removeThreeLetters() {
+      //Play tapping sound
+      if (tap) tap.play();
       //Confirmation
       if (!confirm('Bạn có muốn xóa bớt các chữ cái? (60 xu)')) return;
       //If money is less than 60, do not open
@@ -725,7 +752,7 @@
       setCookie('money', moneyLeft);
       document.getElementById('money').innerText = moneyLeft;
       //Set the pacman effect
-      eat.play();
+      if (eat) eat.play();
       doPacmanTransition();
       //Shuffle them then get the first 3 letters
       shuffle(indexOfWrongLetters);
@@ -811,7 +838,17 @@
         alert('Bạn đã hoàn thành tất cả câu hỏi. Chúng tôi sẽ cập nhật thêm câu hỏi trong thời gian sớm nhất.');
         return;
       }
-      window.location.href = "inGame.html?level=" + level;
+      redirect("inGame.html?level=" + level);
+    }
+
+    //Redirect to other page after tapping sound effect
+    function redirect(url) {
+      if (tap) {
+        tap.play();
+        tap.onended = () => window.location.href = url;
+      } else {
+        window.location.href = url; //No sound, just redirect
+      }
     }
   </script>
 </body>

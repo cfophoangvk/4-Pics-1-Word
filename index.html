@@ -8,10 +8,13 @@
   <style>
     :root {
       touch-action: none;
+      user-select: none;
       width: 100vw;
       height: 100vh;
       margin: 0;
       font-family: 'Helvetica', 'Arial';
+      -webkit-user-select: none;
+      /* SAFARI */
     }
 
     #container {
@@ -62,7 +65,7 @@
       transition: opacity 1s ease-in-out;
     }
 
-    #dialog {
+    .dialog {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -72,15 +75,18 @@
       justify-content: center;
     }
 
-    #dialog button {
+    .dialog>button {
       position: absolute;
       right: 10%;
       top: 10%;
       background: none;
       border: none;
-      color: #ddd;
-      font-size: 1.3em;
+      border-radius: 50%;
       cursor: pointer;
+    }
+
+    .dialog>button>img {
+      width: 30px;
     }
 
     #instruction {
@@ -103,32 +109,130 @@
       margin-right: 5px;
       border-radius: 50%;
     }
+
+    #instruction h1 {
+      font-size: 3em;
+      transform: translateY(-50px);
+      color: turquoise;
+    }
+
+    #toggleButton {
+      position: relative;
+      width: 50px;
+      height: 30px;
+      background-color: #ccc;
+      border-radius: 15px;
+      margin-left: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #toggleButton.active {
+      background-color: #4caf50;
+    }
+
+    #toggleButton::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.3s;
+    }
+
+    #toggleButton.active::after {
+      transform: translateX(20px);
+    }
   </style>
 </head>
 
 <body>
   <div id="container">
-    <div class="main" onclick="window.location.href='level.html'">
+    <div class="main" onclick="redirect('level.html')">
       <img src="mainScreen1.jpg">
       <img src="mainScreen2.jpg" class="fade">
     </div>
     <div class="navigator">
-      <img src="hint/lucky.jpg" onclick="window.location.href='luckyGift.html'">
-      <img src="hint/setting.jpg">
-      <img src="hint/tutorial.jpg" onclick="showDialog()">
+      <img src="hint/lucky.jpg" onclick="redirect('luckyGift.html')">
+      <img src="hint/setting.jpg" onclick="showSettingDialog()">
+      <img src="hint/tutorial.jpg" onclick="showTutorialDialog()">
     </div>
-    <div id="dialog">
-      <button onclick="hideDialog()">X</button>
+    <div id="tutorial" class="dialog">
+      <button onclick="hideTutorialDialog()"><img src="hint/close.jpg"></button>
       <div id="instruction">
         <div><img src="hint/openALetter.jpg"> = 40 xu. Tự động điền 1 kí tự</div>
         <div><img src="hint/removeLetters.jpg"> = 60 xu. Xóa bỏ 3 kí tự không cần thiết</div>
         <div><img src="hint/lucky.jpg"> = Quay số nhận thưởng mỗi ngày.</div>
       </div>
     </div>
+    <div id="setting" class="dialog">
+      <button onclick="hideSettingDialog()"><img src="hint/close.jpg"></button>
+      <div id="instruction">
+        <h1>Cài đặt</h1>
+        <div>Âm thanh:
+          <div id="toggleButton" onclick="toggleSound(this)"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <script>
     //Fade between images
     let isVisible = false;
+    //Play audio when tapping
+    let audio = getCookie('sound') === 'true' ? new Audio('tap.mp3') : null;
+    //If this is the first time, set the sound on
+    if (!getCookie('sound')) setCookie('sound', true);
+
+    //Get and set cookie (Source: W3Schools)
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function setCookie(cname, cvalue) {
+      const d = new Date();
+      d.setTime(d.getTime() + (2 * 30 * 24 * 60 * 60 * 1000)); //Set for 2 months
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires;
+    }
+
+    //Toggle sound
+    function toggleSound(toggleButton) {
+      toggleButton.classList.toggle('active');
+      if (!toggleButton.classList.contains('active')) {
+        setCookie('sound', false)
+        audio = null;
+      } else {
+        setCookie('sound', true)
+        audio = new Audio('tap.mp3');
+      }
+    }
+
+    //Redirect to other page after tapping sound effect
+    function redirect(url) {
+      if (audio) {
+        audio.play();
+        audio.onended = () => window.location.href = url;
+      } else {
+        window.location.href = url; //No sound, just redirect
+      }
+    }
+
+    //Fading between images
     function displayMainScreenImage() {
       isVisible = !isVisible;
       if (isVisible) {
@@ -137,14 +241,33 @@
         document.querySelector('.fade').style.opacity = 0
       }
     }
-    //Show/hide dialog
-    function showDialog() {
-      document.getElementById('dialog').style.display = 'flex';
-    }
-    function hideDialog() {
-      document.getElementById('dialog').style.display = 'none';
-    }
     setInterval(displayMainScreenImage, 5000);
+
+    //Show/hide tutorial dialog
+    function showTutorialDialog() {
+      document.getElementById('tutorial').style.display = 'flex';
+    }
+    function hideTutorialDialog() {
+      document.getElementById('tutorial').style.display = 'none';
+    }
+
+    //Show/hide setting dialog
+    function showSettingDialog() {
+      document.getElementById('setting').style.display = 'flex';
+      if (audio && !toggleButton.classList.contains('active')) {
+        toggleButton.classList.add('active')
+      }
+    }
+    function hideSettingDialog() {
+      document.getElementById('setting').style.display = 'none';
+    }
+
+    //Add tapping sound to other buttons (no redirect)
+    document.querySelectorAll('button, .navigator img, .main, #toggleButton').forEach(button => {
+      button.addEventListener('click', () => {
+        if (audio) audio.play();
+      })
+    });
   </script>
 </body>
 

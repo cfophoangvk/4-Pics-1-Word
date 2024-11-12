@@ -135,7 +135,7 @@
       cursor: pointer;
     }
 
-    #dialog {
+    .dialog {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -146,15 +146,18 @@
       justify-content: center;
     }
 
-    #dialog button {
+    .dialog>button {
       position: absolute;
       right: 10%;
       top: 10%;
       background: none;
       border: none;
-      color: #ddd;
-      font-size: 1.3em;
+      border-radius: 50%;
       cursor: pointer;
+    }
+
+    .dialog>button>img {
+      width: 30px;
     }
 
     #instruction {
@@ -178,6 +181,43 @@
       margin-right: 5px;
       border-radius: 50%;
     }
+
+    #instruction h1 {
+      font-size: 3em;
+      transform: translateY(-50px);
+      color: turquoise;
+    }
+
+    #toggleButton {
+      position: relative;
+      width: 50px;
+      height: 30px;
+      background-color: #ccc;
+      border-radius: 15px;
+      margin-left: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #toggleButton.active {
+      background-color: #4caf50;
+    }
+
+    #toggleButton::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.3s;
+    }
+
+    #toggleButton.active::after {
+      transform: translateX(20px);
+    }
   </style>
 </head>
 
@@ -185,7 +225,7 @@
   <div id="container">
     <header>
       <div class="left">
-        <img src="hint/back.jpg" style="cursor: pointer" onclick="history.back()">
+        <img src="hint/back.jpg" style="cursor: pointer" onclick="redirect()">
         <div>
           <p id="spinsLeft"></p>
           <p id="time">00:00:00</p>
@@ -220,12 +260,12 @@
       </div>
     </div>
     <div class="navigator">
-      <img src="hint/lucky.jpg" onclick="window.location.href='luckyGift.html'">
-      <img src="hint/setting.jpg">
-      <img src="hint/tutorial.jpg" onclick="showDialog()">
+      <img src="hint/lucky.jpg">
+      <img src="hint/setting.jpg" onclick="showSettingDialog()">
+      <img src="hint/tutorial.jpg" onclick="showTutorialDialog()">
     </div>
-    <div id="dialog">
-      <button onclick="hideDialog()">X</button>
+    <div id="tutorial" class="dialog">
+      <button onclick="hideTutorialDialog()"><img src="hint/close.jpg"></button>
       <div id="instruction">
         <div><img src="hint/openALetter.jpg"> = +5 xu.</div>
         <div><img src="hint/removeLetters.jpg"> = +8 xu.</div>
@@ -233,6 +273,15 @@
         <div><img src="hint/moneySilver.jpg"> = +20 xu</div>
         <div><img src="hint/moneyGold.jpg"> = +50 xu</div>
         <div><img src="hint/goodLuck.jpg"> = May mắn lần sau!</div>
+      </div>
+    </div>
+    <div id="setting" class="dialog">
+      <button onclick="hideSettingDialog()"><img src="hint/close.jpg"></button>
+      <div id="instruction">
+        <h1>Cài đặt</h1>
+        <div>Âm thanh:
+          <div id="toggleButton" onclick="toggleSound(this)"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -268,6 +317,33 @@
     //Set the money left
     var moneyLeft = getCookie('money') ? Number(getCookie('money')) : 200;
     document.getElementById('money').innerText = moneyLeft;
+    //Play audio when tapping
+    let audio = getCookie('sound') === 'true' ? new Audio('tap.mp3') : null;
+    //If this is the first time, set the sound on
+    if (!getCookie('sound')) setCookie('sound', true);
+
+    //Toggle sound
+    function toggleSound(toggleButton) {
+      toggleButton.classList.toggle('active');
+      if (!toggleButton.classList.contains('active')) {
+        setCookie('sound', false)
+        audio = null;
+      } else {
+        setCookie('sound', true)
+        audio = new Audio('tap.mp3');
+      }
+    }
+
+    //Go back to the last page
+    function redirect() {
+      console.log(audio);
+      if (audio) {
+        audio.play();
+        audio.onended = () => history.back();
+      } else {
+        history.back(); //No sound, just redirect
+      }
+    }
 
     //Get and set cookie (Source: W3Schools)
     function getCookie(cname) {
@@ -299,8 +375,8 @@
       //Disable the button "Spin !" for 3 seconds
       let button = document.querySelector("#spin");
       button.disabled = true;
-      document.querySelector('.left img').onclick = '';
       if (spinsLeft >= 0) {
+        document.querySelector('.left img').onclick = '';
         setTimeout(() => {
           button.disabled = false;
           document.querySelector('.left img').addEventListener('click', () => {
@@ -316,6 +392,7 @@
       //Update the screen
       document.getElementById('spinsLeft').innerText = `Số lần quay còn lại: ${spinsLeft}`;
       init(false);
+      if (audio) new Audio('spin.mp3').play();
       //Do the spin effect
       for (const door of doors) {
         const boxes = door.querySelector(".boxes");
@@ -448,13 +525,31 @@
     setInterval(updateTime, 1000);
     updateTime();
 
-    //Show/hide dialog
-    function showDialog() {
-      document.getElementById('dialog').style.display = 'flex';
+    //Show/hide tutorial dialog
+    function showTutorialDialog() {
+      document.getElementById('tutorial').style.display = 'flex';
     }
-    function hideDialog() {
-      document.getElementById('dialog').style.display = 'none';
+    function hideTutorialDialog() {
+      document.getElementById('tutorial').style.display = 'none';
     }
+
+    //Show/hide setting dialog
+    function showSettingDialog() {
+      document.getElementById('setting').style.display = 'flex';
+      if (audio && !toggleButton.classList.contains('active')) {
+        toggleButton.classList.add('active')
+      }
+    }
+    function hideSettingDialog() {
+      document.getElementById('setting').style.display = 'none';
+    }
+
+    //Add tapping sound to other buttons (no redirect)
+    document.querySelectorAll('button, .navigator img').forEach(button => {
+      button.addEventListener('click', () => {
+        if (audio) audio.play();
+      })
+    });
   </script>
 </body>
 

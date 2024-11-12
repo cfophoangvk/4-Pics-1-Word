@@ -112,7 +112,7 @@
     </header>
     <div class="levels"></div>
     <div class="back">
-      <img src="hint/home.jpg" onclick="window.location.href='index.html'">
+      <img src="hint/home.jpg" onclick="redirect('index.html')">
     </div>
   </div>
   <script>
@@ -121,6 +121,9 @@
     let currentPage;
     let currentLevel = getCookie('level') ? Number(getCookie('level')) : 1;
     let levelContainer = document.querySelector('.levels');
+    //Play audio when tapping
+    let audio = getCookie('sound') === 'true' ? new Audio('tap.mp3') : null;
+
     //Fetch JSON to get level data
     window.onload = function () {
       fetch('data.json').then(response => response.json())
@@ -139,6 +142,16 @@
         })
     }
 
+    //Redirect to other page after tapping sound effect
+    function redirect(url) {
+      if (audio) {
+        audio.play();
+        audio.onended = () => window.location.href = url;
+      } else {
+        window.location.href = url; //No sound, just redirect
+      }
+    }
+
     //Render the pages
     function renderPage() {
       let firstItem = (currentPage - 1) * 42 + 1;
@@ -151,13 +164,13 @@
         if (i === currentLevel) {
           levelItem.classList.add('current');
           levelItem.onclick = function () {
-            window.location.href = "/inGame.html?level=" + i;
+            redirect("/inGame.html?level=" + i);
           }
         } else if (i > currentLevel) {
           levelItem.classList.add('disabled');
         } else {
           levelItem.onclick = function () {
-            window.location.href = "/inGame.html?level=" + i;
+            redirect("/inGame.html?level=" + i);
           }
         }
         levelContainer.appendChild(levelItem);
@@ -170,10 +183,10 @@
 
     //Go to previous/next page
     function goToPreviousPage() {
-      window.location.href = "level.html?page=" + --currentPage;
+      redirect("level.html?page=" + --currentPage);
     }
     function goToNextPage() {
-      window.location.href = "level.html?page=" + ++currentPage;
+      redirect("level.html?page=" + ++currentPage);
     }
 
     //Get cookie (Source: W3Schools)
