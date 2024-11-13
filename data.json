@@ -998,5 +998,130 @@
     "level": 200,
     "answer": "OCDAO",
     "display": "Ốc đảo"
+  },
+  {
+    "level": 201,
+    "answer": "QUOCTANG",
+    "display": "Quốc tang"
+  },
+  {
+    "level": 202,
+    "answer": "CHAUMY",
+    "display": "Châu Mỹ"
+  },
+  {
+    "level": 203,
+    "answer": "BUABON",
+    "display": "Bừa bộn"
+  },
+  {
+    "level": 204,
+    "answer": "THUYDIEN",
+    "display": "Thuỷ điện"
+  },
+  {
+    "level": 205,
+    "answer": "KHOBAU",
+    "display": "Kho báu"
+  },
+  {
+    "level": 206,
+    "answer": "TRON",
+    "display": "Trốn"
+  },
+  {
+    "level": 207,
+    "answer": "GIANLAN",
+    "display": "Gian lận"
+  },
+  {
+    "level": 208,
+    "answer": "BACCUC",
+    "display": "Bắc cực"
+  },
+  {
+    "level": 209,
+    "answer": "DOANKET",
+    "display": "Đoàn kết"
+  },
+  {
+    "level": 210,
+    "answer": "MUADONG",
+    "display": "Mùa đông"
+  },
+  {
+    "level": 211,
+    "answer": "TRAN",
+    "display": "Tràn"
+  },
+  {
+    "level": 212,
+    "answer": "DIENBIENPHU",
+    "display": "Điện Biên Phủ"
+  },
+  {
+    "level": 213,
+    "answer": "CHAUPHI",
+    "display": "Châu Phi"
+  },
+  {
+    "level": 214,
+    "answer": "DOKY",
+    "display": "Đố kỵ"
+  },
+  {
+    "level": 215,
+    "answer": "CUNG",
+    "display": "Cứng"
+  },
+  {
+    "level": 216,
+    "answer": "CHAUNAMCUC",
+    "display": "Châu Nam Cực"
+  },
+  {
+    "level": 217,
+    "answer": "HOIAN",
+    "display": "Hội An"
+  },
+  {
+    "level": 218,
+    "answer": "TROGIUP",
+    "display": "Trợ giúp"
+  },
+  {
+    "level": 219,
+    "answer": "RONG",
+    "display": "Rộng"
+  },
+  {
+    "level": 220,
+    "answer": "PHAUTHUAT",
+    "display": "Phẫu thuật"
+  },
+  {
+    "level": 221,
+    "answer": "HUYENTHOAI",
+    "display": "Huyền thoại"
+  },
+  {
+    "level": 222,
+    "answer": "CAPHESANVUON",
+    "display": "Cà phê sân vườn"
+  },
+  {
+    "level": 223,
+    "answer": "CHAUUC",
+    "display": "Châu Úc"
+  },
+  {
+    "level": 224,
+    "answer": "QUOCHOI",
+    "display": "Quốc hội"
+  },
+  {
+    "level": 225,
+    "answer": "NGHINGOI",
+    "display": "Nghỉ ngơi"
   }
 ]
