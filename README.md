@@ -3,7 +3,7 @@
 <p align="center">(although this project is NOT about .NET)</p>
 
 #### About this project:
-- 🔭 This project has been ongoing for **21** days (2024/10/22 - ...)<br>
+- 🔭 This project has been ongoing for **24** days (2024/10/22 - ...)<br>
 - Number of LOCs: **1,909** (Upgrading)<br>
 - 📫 Contact me at **hieuthien20042004@gmail.com**
 
@@ -32,4 +32,4 @@
 ### NO FRAMEWORK INCLUDED!
 ### This website is deployed on Vercel!
 - Visit [here](https://4-pics-1-word.vercel.app/) to see the result!  
-- There are 200 questions in total, and it is expanding more!
+- There are 275 questions in total, and it is expanding more!

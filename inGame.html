@@ -313,7 +313,7 @@
   <div class="container">
     <header>
       <div class="left">
-        <img src="hint/back.jpg" style="cursor: pointer" onclick="redirect('level.html')">
+        <img src="hint/back.jpg" style="cursor: pointer" onclick="goBack()">
         <img src="hint/lucky.jpg" onclick="redirect('luckyGift.html')">
       </div>
       <p id="currentLevel"></p>
@@ -443,6 +443,12 @@
     document.getElementById('image2').querySelector('img').src = `images/${level}-2.jpg`;
     document.getElementById('image3').querySelector('img').src = `images/${level}-3.jpg`;
     document.getElementById('image4').querySelector('img').src = `images/${level}-4.jpg`;
+
+    //Go back to the page that has current level
+    function goBack() {
+      const page = Math.ceil(level / 42);
+      redirect(`level.html?page=${page}`)
+    }
 
     //Get URL Parameter
     function getURLParameter(param) {
