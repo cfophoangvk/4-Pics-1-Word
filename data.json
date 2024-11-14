@@ -1123,5 +1123,130 @@
     "level": 225,
     "answer": "NGHINGOI",
     "display": "Nghỉ ngơi"
+  },
+  {
+    "level": 226,
+    "answer": "RUNGGIA",
+    "display": "Rừng già"
+  },
+  {
+    "level": 227,
+    "answer": "DOITHU",
+    "display": "Đối thủ"
+  },
+  {
+    "level": 228,
+    "answer": "DACSAN",
+    "display": "Đặc sản"
+  },
+  {
+    "level": 229,
+    "answer": "BATDONGSAN",
+    "display": "Bất động sản"
+  },
+  {
+    "level": 230,
+    "answer": "DONGTINH",
+    "display": "Đồng tính"
+  },
+  {
+    "level": 231,
+    "answer": "TAYBAC",
+    "display": "Tây Bắc"
+  },
+  {
+    "level": 232,
+    "answer": "GIAITRI",
+    "display": "Giải trí"
+  },
+  {
+    "level": 233,
+    "answer": "THANTHOAI",
+    "display": "Thần thoại"
+  },
+  {
+    "level": 234,
+    "answer": "DIADAOCUCHI",
+    "display": "Địa đạo Củ Chi"
+  },
+  {
+    "level": 235,
+    "answer": "TINDUNG",
+    "display": "Tín dụng"
+  },
+  {
+    "level": 236,
+    "answer": "HAISAN",
+    "display": "Hải sản"
+  },
+  {
+    "level": 237,
+    "answer": "DONGCHI",
+    "display": "Đồng chí"
+  },
+  {
+    "level": 238,
+    "answer": "NGUYENNHATANH",
+    "display": "Nguyễn Nhật Ánh"
+  },
+  {
+    "level": 239,
+    "answer": "MAOHIEM",
+    "display": "Mạo hiểm"
+  },
+  {
+    "level": 240,
+    "answer": "SAIGON",
+    "display": "Sài Gòn"
+  },
+  {
+    "level": 241,
+    "answer": "NHAGIAOVIETNAM",
+    "display": "Nhà giáo Việt Nam"
+  },
+  {
+    "level": 242,
+    "answer": "LUONGY",
+    "display": "Lương y"
+  },
+  {
+    "level": 243,
+    "answer": "NHAU",
+    "display": "Nhậu"
+  },
+  {
+    "level": 244,
+    "answer": "KETTHUC",
+    "display": "Kết thúc"
+  },
+  {
+    "level": 245,
+    "answer": "TONGIAO",
+    "display": "Tôn giáo"
+  },
+  {
+    "level": 246,
+    "answer": "ANNINH",
+    "display": "An ninh"
+  },
+  {
+    "level": 247,
+    "answer": "DITICH",
+    "display": "Di tích"
+  },
+  {
+    "level": 248,
+    "answer": "SONG",
+    "display": "Sống"
+  },
+  {
+    "level": 249,
+    "answer": "GIANGSINH",
+    "display": "Giáng sinh"
+  },
+  {
+    "level": 250,
+    "answer": "NHOT",
+    "display": "Nhột"
   }
 ]
