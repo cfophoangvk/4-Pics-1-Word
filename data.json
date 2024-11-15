@@ -1248,5 +1248,130 @@
     "level": 250,
     "answer": "NHOT",
     "display": "Nhột"
+  },
+  {
+    "level": 251,
+    "answer": "VESINH",
+    "display": "Vệ sinh"
+  },
+  {
+    "level": 252,
+    "answer": "MAYMAN",
+    "display": "May mắn"
+  },
+  {
+    "level": 253,
+    "answer": "CHIENBINH",
+    "display": "Chiến binh"
+  },
+  {
+    "level": 254,
+    "answer": "XAYDUNG",
+    "display": "Xây dựng"
+  },
+  {
+    "level": 255,
+    "answer": "DANG",
+    "display": "Đắng"
+  },
+  {
+    "level": 256,
+    "answer": "LUOI",
+    "display": "Lười"
+  },
+  {
+    "level": 257,
+    "answer": "NHANBANVOTINH",
+    "display": "Nhân bản vô tính"
+  },
+  {
+    "level": 258,
+    "answer": "TRETRAU",
+    "display": "Trẻ trâu"
+  },
+  {
+    "level": 259,
+    "answer": "MOIGIOI",
+    "display": "Môi giới"
+  },
+  {
+    "level": 260,
+    "answer": "NGUCOC",
+    "display": "Ngũ cốc"
+  },
+  {
+    "level": 261,
+    "answer": "VANHOCVIETNAM",
+    "display": "Văn học Việt Nam"
+  },
+  {
+    "level": 262,
+    "answer": "THUDO",
+    "display": "Thủ đô"
+  },
+  {
+    "level": 263,
+    "answer": "PHA",
+    "display": "Phà"
+  },
+  {
+    "level": 264,
+    "answer": "QUAGIANG",
+    "display": "Quá giang"
+  },
+  {
+    "level": 265,
+    "answer": "NGANG",
+    "display": "Ngang"
+  },
+  {
+    "level": 266,
+    "answer": "TRUYDUOI",
+    "display": "Truy đuổi"
+  },
+  {
+    "level": 267,
+    "answer": "DIUNG",
+    "display": "Dị ứng"
+  },
+  {
+    "level": 268,
+    "answer": "THIETKE",
+    "display": "Thiết kế"
+  },
+  {
+    "level": 269,
+    "answer": "MUON",
+    "display": "Muộn"
+  },
+  {
+    "level": 270,
+    "answer": "DAGA",
+    "display": "Đá gà"
+  },
+  {
+    "level": 271,
+    "answer": "TUKY",
+    "display": "Tự kỷ"
+  },
+  {
+    "level": 272,
+    "answer": "QUOCPHONG",
+    "display": "Quốc phòng"
+  },
+  {
+    "level": 273,
+    "answer": "LEOCAY",
+    "display": "Leo cây"
+  },
+  {
+    "level": 274,
+    "answer": "THACMAC",
+    "display": "Thắc mắc"
+  },
+  {
+    "level": 275,
+    "answer": "VUOTNGUC",
+    "display": "Vượt ngục"
   }
 ]

@@ -98,9 +98,15 @@
       transform: scale(2.03);
     }
 
-    #answer {
-      margin-top: 10px;
+    #answer-container {
+      display: flex;
+      justify-content: center;
       width: var(--full-width);
+      margin-top: 10px;
+    }
+
+    #answer {
+      width: calc(var(--full-width) - 30px);
       height: 70px;
       display: flex;
       justify-content: center;
@@ -338,7 +344,9 @@
         <img> <!-- ### FOURTH PICTURE -->
       </div>
     </div>
-    <div id="answer"></div>
+    <div id="answer-container">
+      <div id="answer"></div>
+    </div>
     <div id="answer-option">
       <div></div>
       <div></div>
@@ -727,10 +735,7 @@
       let remainingLetters = finalAnswer.split('');
       let answers = document.querySelectorAll('#answer div');
       answers.forEach((answer, index) => {
-        if (!answers[index].dataset.disabled) {
-          //Remove the letter if it's on the answer box
-          removeLetter(answer);
-        } else {
+        if (answers[index].dataset.disabled) {
           //If a letter is revealed, remove the letter from array
           remove(remainingLetters, answer.innerText);
         }
@@ -753,6 +758,12 @@
         alert('Bạn đã xóa hết các chữ cái không cần thiết!');
         return;
       }
+      //Remove the letter if it's on the answer box
+      answers.forEach((answer, index) => {
+        if (!answers[index].dataset.disabled) {
+          removeLetter(answer);
+        }
+      });
       //Set the cookie of money
       moneyLeft -= 60;
       setCookie('money', moneyLeft);
