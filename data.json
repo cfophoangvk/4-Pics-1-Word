@@ -1373,5 +1373,130 @@
     "level": 275,
     "answer": "VUOTNGUC",
     "display": "Vượt ngục"
+  },
+  {
+    "level": 276,
+    "answer": "TUDUC",
+    "display": "Tứ đức"
+  },
+  {
+    "level": 277,
+    "answer": "HUNGNHAI",
+    "display": "Húng nhại"
+  },
+  {
+    "level": 278,
+    "answer": "THEGIOI",
+    "display": "Thế giới"
+  },
+  {
+    "level": 279,
+    "answer": "NGOT",
+    "display": "Ngọt"
+  },
+  {
+    "level": 280,
+    "answer": "KHOE",
+    "display": "Khỏe"
+  },
+  {
+    "level": 281,
+    "answer": "NHATRANG",
+    "display": "Nhà trắng"
+  },
+  {
+    "level": 282,
+    "answer": "MUAHE",
+    "display": "Mùa hè"
+  },
+  {
+    "level": 283,
+    "answer": "HOAHOC",
+    "display": "Hóa học"
+  },
+  {
+    "level": 284,
+    "answer": "CHINHTRI",
+    "display": "Chính trị"
+  },
+  {
+    "level": 285,
+    "answer": "TUYETCHUNG",
+    "display": "Tuyệt chủng"
+  },
+  {
+    "level": 286,
+    "answer": "HOIBIA",
+    "display": "Hôi bia"
+  },
+  {
+    "level": 287,
+    "answer": "LOI",
+    "display": "Lỗi"
+  },
+  {
+    "level": 288,
+    "answer": "DIANGUC",
+    "display": "Địa ngục"
+  },
+  {
+    "level": 289,
+    "answer": "DINH",
+    "display": "Dính"
+  },
+  {
+    "level": 290,
+    "answer": "GIAODUC",
+    "display": "Giáo dục"
+  },
+  {
+    "level": 291,
+    "answer": "BANQUYEN",
+    "display": "Bản quyền"
+  },
+  {
+    "level": 292,
+    "answer": "TUSUONG",
+    "display": "Tự sướng"
+  },
+  {
+    "level": 293,
+    "answer": "NONG",
+    "display": "Nóng"
+  },
+  {
+    "level": 294,
+    "answer": "COMAOGAOTIEN",
+    "display": "Cơm áo gạo tiền"
+  },
+  {
+    "level": 295,
+    "answer": "VANGVE",
+    "display": "Vắng vẻ"
+  },
+  {
+    "level": 296,
+    "answer": "BANHTET",
+    "display": "Bánh tét"
+  },
+  {
+    "level": 297,
+    "answer": "QUEHUONG",
+    "display": "Quê hương"
+  },
+  {
+    "level": 298,
+    "answer": "TAULUA",
+    "display": "Tàu lửa"
+  },
+  {
+    "level": 299,
+    "answer": "BUONMAYBANDAT",
+    "display": "Buôn may bán đắt"
+  },
+  {
+    "level": 300,
+    "answer": "GIAPNGO",
+    "display": "Giáp ngọ"
   }
 ]
