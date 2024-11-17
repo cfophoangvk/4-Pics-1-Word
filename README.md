@@ -32,4 +32,4 @@
 ### NO FRAMEWORK INCLUDED!
 ### This website is deployed on Vercel!
 - Visit [here](https://4-pics-1-word.vercel.app/) to see the result!  
-- There are 275 questions in total, and it is expanding more!
+- There are 300 questions in total, and it is expanding more!
