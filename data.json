@@ -1498,5 +1498,55 @@
     "level": 300,
     "answer": "GIAPNGO",
     "display": "Giáp ngọ"
+  },
+  {
+    "level": 301,
+    "answer": "HANOI",
+    "display": "Hà Nội"
+  },
+  {
+    "level": 302,
+    "answer": "DONCATAITU",
+    "display": "Đờn ca tài tử"
+  },
+  {
+    "level": 303,
+    "answer": "VONGUYENGIAP",
+    "display": "Võ Nguyên Giáp"
+  },
+  {
+    "level": 304,
+    "answer": "THANTUONG",
+    "display": "Thần tượng"
+  },
+  {
+    "level": 305,
+    "answer": "LIENHOPQUOC",
+    "display": "Liên hợp quốc"
+  },
+  {
+    "level": 306,
+    "answer": "THANGLONG",
+    "display": "Thăng Long"
+  },
+  {
+    "level": 307,
+    "answer": "BIENDONG",
+    "display": "Biển Đông"
+  },
+  {
+    "level": 308,
+    "answer": "YDUC",
+    "display": "Y đức"
+  },
+  {
+    "level": 309,
+    "answer": "SONGTHAN",
+    "display": "Sóng thần"
+  },
+  {
+    "level": 310,
+    "answer": "HAIYEN",
+    "display": "Hải Yến"
   }
 ]
