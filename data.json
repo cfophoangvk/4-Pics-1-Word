@@ -1548,5 +1548,55 @@
     "level": 310,
     "answer": "HAIYEN",
     "display": "Hải Yến"
+  },
+  {
+    "level": 311,
+    "answer": "VIETNAMIDOL",
+    "display": "Vietnam Idol"
+  },
+  {
+    "level": 312,
+    "answer": "HANQUOC",
+    "display": "Hàn Quốc"
+  },
+  {
+    "level": 313,
+    "answer": "HIENPHAP",
+    "display": "Hiến pháp"
+  },
+  {
+    "level": 314,
+    "answer": "DOANNHANH",
+    "display": "Đồ ăn nhanh"
+  },
+  {
+    "level": 315,
+    "answer": "CONGCHIENG",
+    "display": "Cồng chiêng"
+  },
+  {
+    "level": 316,
+    "answer": "CANHDIEUVANG",
+    "display": "Cánh diều vàng"
+  },
+  {
+    "level": 317,
+    "answer": "HOANGTUBE",
+    "display": "Hoàng tử bé"
+  },
+  {
+    "level": 318,
+    "answer": "FACEBOOK",
+    "display": "Facebook"
+  },
+  {
+    "level": 319,
+    "answer": "PHATDAN",
+    "display": "Phật đản"
+  },
+  {
+    "level": 320,
+    "answer": "KEOCO",
+    "display": "Kéo co"
   }
 ]
