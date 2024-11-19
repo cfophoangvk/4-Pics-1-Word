@@ -154,6 +154,9 @@
 
     //Render the pages
     function renderPage() {
+      //Delete all level item
+      levelContainer.innerHTML = '';
+
       let firstItem = (currentPage - 1) * 42 + 1;
       let lastItem = currentPage !== totalPages ? currentPage * 42 : totalLevels;
       for (let i = firstItem; i <= lastItem; i++) {
@@ -183,10 +186,20 @@
 
     //Go to previous/next page
     function goToPreviousPage() {
-      redirect("level.html?page=" + --currentPage);
+      if (currentPage > 1) {
+        currentPage--;
+        document.querySelector('.center').innerText = `${currentPage}/${totalPages}`;
+        renderPage();
+        audio.play();
+      }
     }
     function goToNextPage() {
-      redirect("level.html?page=" + ++currentPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        document.querySelector('.center').innerText = `${currentPage}/${totalPages}`;
+        renderPage();
+        audio.play();
+      }
     }
 
     //Get cookie (Source: W3Schools)

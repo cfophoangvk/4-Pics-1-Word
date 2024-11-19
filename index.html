@@ -151,7 +151,7 @@
 
 <body>
   <div id="container">
-    <div class="main" onclick="redirect('level.html')">
+    <div class="main" onclick="goToMenuPage()">
       <img src="mainScreen1.jpg">
       <img src="mainScreen2.jpg" class="fade">
     </div>
@@ -260,6 +260,12 @@
     }
     function hideSettingDialog() {
       document.getElementById('setting').style.display = 'none';
+    }
+
+    //Go to levels menu with the latest played level
+    function goToMenuPage() {
+      let currentLevel = getCookie('level') ? Number(getCookie('level')) : 1;
+      redirect(`level.html?page=${Math.ceil(currentLevel / 42)}`)
     }
 
     //Add tapping sound to other buttons (no redirect)
