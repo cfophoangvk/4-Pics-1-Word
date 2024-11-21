@@ -1598,5 +1598,55 @@
     "level": 320,
     "answer": "KEOCO",
     "display": "Kéo co"
+  },
+  {
+    "level": 321,
+    "answer": "GIOTO",
+    "display": "Giỗ tổ"
+  },
+  {
+    "level": 322,
+    "answer": "FESTIVALHUE",
+    "display": "Festival Huế"
+  },
+  {
+    "level": 323,
+    "answer": "ASEAN",
+    "display": "Asean"
+  },
+  {
+    "level": 324,
+    "answer": "NHANHAC",
+    "display": "Nhã nhạc"
+  },
+  {
+    "level": 325,
+    "answer": "DONGTHIENDUONG",
+    "display": "Động thiên đường"
+  },
+  {
+    "level": 326,
+    "answer": "BONGDANU",
+    "display": "Bóng đá nữ"
+  },
+  {
+    "level": 327,
+    "answer": "THEVANHOI",
+    "display": "Thế vận hội"
+  },
+  {
+    "level": 328,
+    "answer": "BRASIL",
+    "display": "Brasil"
+  },
+  {
+    "level": 329,
+    "answer": "DEEMROIXA",
+    "display": "Để em rời xa"
+  },
+  {
+    "level": 330,
+    "answer": "HANGKHONG",
+    "display": "Hàng không"
   }
 ]
