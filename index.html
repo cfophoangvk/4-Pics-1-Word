@@ -12,12 +12,12 @@
       width: 100vw;
       height: 100vh;
       margin: 0;
-      font-family: 'Helvetica', 'Arial';
+      font-family: 'Helvetica', 'Arial', sans-serif;
       -webkit-user-select: none;
       /* SAFARI */
     }
 
-    #container {
+    .container {
       width: 360px;
       height: 555px;
       background-color: #ddd;
@@ -29,12 +29,43 @@
       flex-direction: column;
     }
 
+    #mainScreen {
+      opacity: 0;
+      display: none;
+      transition: opacity 1.5s linear;
+    }
+
     .main {
-      margin: auto;
+      border: 0;
       width: 100%;
       position: relative;
       overflow: hidden;
       cursor: pointer;
+    }
+
+    #welcome {
+      transition: opacity 1.5s linear;
+    }
+
+    #welcome .main {
+      margin-top: 25%;
+    }
+
+    #blink-text {
+      color: #EA7353;
+      text-align: center;
+      margin-top: 20px;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    #mainScreen .main {
+      margin: auto;
     }
 
     .main img {
@@ -57,7 +88,9 @@
       cursor: pointer;
     }
 
-    .fade {
+    .fade,
+    .fade1,
+    .fade2 {
       position: absolute;
       top: 0;
       left: 0;
@@ -150,26 +183,34 @@
 </head>
 
 <body>
-  <div id="container">
+  <div class="container" id="welcome" onclick="goToMainScreen()">
+    <div class="main">
+      <img src="welcomeScreen1.jpg" class="fade0" alt="welcome-screen">
+      <img src="welcomeScreen2.jpg" class="fade1" alt="welcome-screen">
+      <img src="welcomeScreen3.jpg" class="fade2" alt="welcome-screen">
+    </div>
+    <div id="blink-text">Nhấn màn hình để tiếp tục</div>
+  </div>
+  <div class="container" id="mainScreen">
     <div class="main" onclick="goToMenuPage()">
-      <img src="mainScreen1.jpg">
-      <img src="mainScreen2.jpg" class="fade">
+      <img src="mainScreen1.jpg" alt="main-screen">
+      <img src="mainScreen2.jpg" class="fade" alt="main-screen">
     </div>
     <div class="navigator">
-      <img src="hint/lucky.jpg" onclick="redirect('luckyGift.html')">
-      <img src="hint/setting.jpg" onclick="showSettingDialog()">
-      <img src="hint/tutorial.jpg" onclick="showTutorialDialog()">
+      <img src="hint/lucky.jpg" onclick="redirect('luckyGift.html')" alt="lucky">
+      <img src="hint/setting.jpg" onclick="showSettingDialog()" alt="setting">
+      <img src="hint/tutorial.jpg" onclick="showTutorialDialog()" alt="tutorial">
     </div>
     <div id="tutorial" class="dialog">
-      <button onclick="hideTutorialDialog()"><img src="hint/close.jpg"></button>
+      <button onclick="hideTutorialDialog()"><img src="hint/close.jpg" alt="close"></button>
       <div id="instruction">
-        <div><img src="hint/openALetter.jpg"> = 40 xu. Tự động điền 1 kí tự</div>
-        <div><img src="hint/removeLetters.jpg"> = 60 xu. Xóa bỏ 3 kí tự không cần thiết</div>
-        <div><img src="hint/lucky.jpg"> = Quay số nhận thưởng mỗi ngày.</div>
+        <div><img src="hint/openALetter.jpg" alt="open-a-letter"> = 40 xu. Tự động điền 1 kí tự</div>
+        <div><img src="hint/removeLetters.jpg" alt="remove-letters"> = 60 xu. Xóa bỏ 3 kí tự không cần thiết</div>
+        <div><img src="hint/lucky.jpg" alt="lucky"> = Quay số nhận thưởng mỗi ngày.</div>
       </div>
     </div>
     <div id="setting" class="dialog">
-      <button onclick="hideSettingDialog()"><img src="hint/close.jpg"></button>
+      <button onclick="hideSettingDialog()"><img src="hint/close.jpg" alt="close"></button>
       <div id="instruction">
         <h1>Cài đặt</h1>
         <div>Âm thanh:
@@ -180,9 +221,11 @@
   </div>
   <script>
     //Fade between images
-    let isVisible = false;
+    let isWelcomeImageVisible = 0;
+    let isMainScreenImageVisible = false;
     //Play audio when tapping
     let audio = getCookie('sound') === 'true' ? new Audio('tap.mp3') : null;
+    let home = getCookie('sound') === 'true' ? new Audio('home.mp3') : null;
     //If this is the first time, set the sound on
     if (!getCookie('sound')) setCookie('sound', true);
 
@@ -191,8 +234,8 @@
       let name = cname + "=";
       let decodedCookie = decodeURIComponent(document.cookie);
       let ca = decodedCookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
+      for (const e of ca) {
+        let c = e;
         while (c.charAt(0) == ' ') {
           c = c.substring(1);
         }
@@ -216,9 +259,13 @@
       if (!toggleButton.classList.contains('active')) {
         setCookie('sound', false)
         audio = null;
+        home.pause();
+        home = null;
       } else {
         setCookie('sound', true)
         audio = new Audio('tap.mp3');
+        home = new Audio('home.mp3');
+        home.play();
       }
     }
 
@@ -232,15 +279,48 @@
       }
     }
 
+    //Fade to main screen
+    function goToMainScreen() {
+      let welcome = document.getElementById('welcome');
+      let mainScreen = document.getElementById('mainScreen');
+      welcome.style.opacity = 0;
+      welcome.ontransitionend = () => {
+        mainScreen.style.display = 'flex';
+        setTimeout(() => {
+          mainScreen.style.opacity = 1;
+        }, 10);
+        if (home) home.play();
+      }
+    }
+
     //Fading between images
+    function displayWelcomeImage() {
+      isWelcomeImageVisible++;
+      if (isWelcomeImageVisible % 3 === 1) {
+        document.querySelector('.fade0').style.opacity = 0;
+        document.querySelector('.fade1').style.opacity = 1;
+        document.querySelector('.fade2').style.opacity = 0;
+      } else if (isWelcomeImageVisible % 3 === 2) {
+        document.querySelector('.fade0').style.opacity = 0;
+        document.querySelector('.fade1').style.opacity = 0;
+        document.querySelector('.fade2').style.opacity = 1;
+      } else {
+        document.querySelector('.fade0').style.opacity = 1;
+        document.querySelector('.fade1').style.opacity = 0;
+        document.querySelector('.fade2').style.opacity = 0;
+      }
+    }
+
     function displayMainScreenImage() {
-      isVisible = !isVisible;
-      if (isVisible) {
+      isMainScreenImageVisible = !isMainScreenImageVisible;
+      if (isMainScreenImageVisible) {
         document.querySelector('.fade').style.opacity = 1
       } else {
         document.querySelector('.fade').style.opacity = 0
       }
     }
+
+    setInterval(displayWelcomeImage, 5000);
     setInterval(displayMainScreenImage, 5000);
 
     //Show/hide tutorial dialog

@@ -3,7 +3,7 @@
 <p align="center">(although this project is NOT about .NET)</p>
 
 #### About this project:
-- 🔭 This project has been ongoing for **31** days (2024/10/22 - 2024/11/21)<br>
+- 🔭 This project has been ongoing for **32** days (2024/10/22 - 2024/11/22)<br>
 - Number of LOCs: **1,909** (Upgrading)<br>
 - 📫 Contact me at **hieuthien20042004@gmail.com**
 
