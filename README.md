@@ -4,7 +4,7 @@
 
 #### About this project:
 - 🔭 This project has been ongoing for **32** days (2024/10/22 - 2024/11/22)<br>
-- Number of LOCs: **1,909** (Upgrading)<br>
+- Number of LOCs: **2,029** (Upgrading)<br>
 - 📫 Contact me at **hieuthien20042004@gmail.com**
 
 ### This project is VERY lite, as it is made of:

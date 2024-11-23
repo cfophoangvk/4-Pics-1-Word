@@ -17,7 +17,16 @@
       /* SAFARI */
     }
 
-    .container {
+    #main {
+      margin-top: 25%;
+      border: 0;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #welcome {
       width: 360px;
       height: 555px;
       background-color: #ddd;
@@ -27,28 +36,7 @@
       transform: translate(-50%, -50%);
       display: flex;
       flex-direction: column;
-    }
-
-    #mainScreen {
-      opacity: 0;
-      display: none;
       transition: opacity 1.5s linear;
-    }
-
-    .main {
-      border: 0;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    #welcome {
-      transition: opacity 1.5s linear;
-    }
-
-    #welcome .main {
-      margin-top: 25%;
     }
 
     #blink-text {
@@ -64,28 +52,10 @@
       }
     }
 
-    #mainScreen .main {
-      margin: auto;
-    }
-
-    .main img {
+    #main img {
       width: 100%;
       aspect-ratio: 1/1;
       transition: opacity 1s ease-in-out;
-    }
-
-    .navigator {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-      gap: 10px
-    }
-
-    .navigator img {
-      mix-blend-mode: darken;
-      width: 25px;
-      aspect-ratio: 1/1;
-      cursor: pointer;
     }
 
     .fade,
@@ -97,187 +67,22 @@
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
-
-    .dialog {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      opacity: 0.8;
-      display: none;
-      justify-content: center;
-    }
-
-    .dialog>button {
-      position: absolute;
-      right: 10%;
-      top: 10%;
-      background: none;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .dialog>button>img {
-      width: 30px;
-    }
-
-    #instruction {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start;
-      color: white;
-      font-size: 14px;
-      gap: 20px;
-    }
-
-    #instruction div {
-      display: flex;
-      align-items: center;
-    }
-
-    #instruction div img {
-      width: 25px;
-      margin-right: 5px;
-      border-radius: 50%;
-    }
-
-    #instruction h1 {
-      font-size: 3em;
-      transform: translateY(-50px);
-      color: turquoise;
-    }
-
-    #toggleButton {
-      position: relative;
-      width: 50px;
-      height: 30px;
-      background-color: #ccc;
-      border-radius: 15px;
-      margin-left: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #toggleButton.active {
-      background-color: #4caf50;
-    }
-
-    #toggleButton::after {
-      content: '';
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      background-color: white;
-      border-radius: 50%;
-      top: 3px;
-      left: 3px;
-      transition: transform 0.3s;
-    }
-
-    #toggleButton.active::after {
-      transform: translateX(20px);
-    }
   </style>
 </head>
 
 <body>
   <div class="container" id="welcome" onclick="goToMainScreen()">
-    <div class="main">
+    <div id="main">
       <img src="welcomeScreen1.jpg" class="fade0" alt="welcome-screen">
       <img src="welcomeScreen2.jpg" class="fade1" alt="welcome-screen">
       <img src="welcomeScreen3.jpg" class="fade2" alt="welcome-screen">
     </div>
     <div id="blink-text">Nhấn màn hình để tiếp tục</div>
   </div>
-  <div class="container" id="mainScreen">
-    <div class="main" onclick="goToMenuPage()">
-      <img src="mainScreen1.jpg" alt="main-screen">
-      <img src="mainScreen2.jpg" class="fade" alt="main-screen">
-    </div>
-    <div class="navigator">
-      <img src="hint/lucky.jpg" onclick="redirect('luckyGift.html')" alt="lucky">
-      <img src="hint/setting.jpg" onclick="showSettingDialog()" alt="setting">
-      <img src="hint/tutorial.jpg" onclick="showTutorialDialog()" alt="tutorial">
-    </div>
-    <div id="tutorial" class="dialog">
-      <button onclick="hideTutorialDialog()"><img src="hint/close.jpg" alt="close"></button>
-      <div id="instruction">
-        <div><img src="hint/openALetter.jpg" alt="open-a-letter"> = 40 xu. Tự động điền 1 kí tự</div>
-        <div><img src="hint/removeLetters.jpg" alt="remove-letters"> = 60 xu. Xóa bỏ 3 kí tự không cần thiết</div>
-        <div><img src="hint/lucky.jpg" alt="lucky"> = Quay số nhận thưởng mỗi ngày.</div>
-      </div>
-    </div>
-    <div id="setting" class="dialog">
-      <button onclick="hideSettingDialog()"><img src="hint/close.jpg" alt="close"></button>
-      <div id="instruction">
-        <h1>Cài đặt</h1>
-        <div>Âm thanh:
-          <div id="toggleButton" onclick="toggleSound(this)"></div>
-        </div>
-      </div>
-    </div>
-  </div>
   <script>
     //Fade between images
     let isWelcomeImageVisible = 0;
     let isMainScreenImageVisible = false;
-    //Play audio when tapping
-    let audio = getCookie('sound') === 'true' ? new Audio('tap.mp3') : null;
-    let home = getCookie('sound') === 'true' ? new Audio('home.mp3') : null;
-    //If this is the first time, set the sound on
-    if (!getCookie('sound')) setCookie('sound', true);
-
-    //Get and set cookie (Source: W3Schools)
-    function getCookie(cname) {
-      let name = cname + "=";
-      let decodedCookie = decodeURIComponent(document.cookie);
-      let ca = decodedCookie.split(';');
-      for (const e of ca) {
-        let c = e;
-        while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
-    }
-
-    function setCookie(cname, cvalue) {
-      const d = new Date();
-      d.setTime(d.getTime() + (2 * 30 * 24 * 60 * 60 * 1000)); //Set for 2 months
-      let expires = "expires=" + d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires;
-    }
-
-    //Toggle sound
-    function toggleSound(toggleButton) {
-      toggleButton.classList.toggle('active');
-      if (!toggleButton.classList.contains('active')) {
-        setCookie('sound', false)
-        audio = null;
-        home.pause();
-        home = null;
-      } else {
-        setCookie('sound', true)
-        audio = new Audio('tap.mp3');
-        home = new Audio('home.mp3');
-        home.play();
-      }
-    }
-
-    //Redirect to other page after tapping sound effect
-    function redirect(url) {
-      if (audio) {
-        audio.play();
-        audio.onended = () => window.location.href = url;
-      } else {
-        window.location.href = url; //No sound, just redirect
-      }
-    }
 
     //Fade to main screen
     function goToMainScreen() {
@@ -285,11 +90,7 @@
       let mainScreen = document.getElementById('mainScreen');
       welcome.style.opacity = 0;
       welcome.ontransitionend = () => {
-        mainScreen.style.display = 'flex';
-        setTimeout(() => {
-          mainScreen.style.opacity = 1;
-        }, 10);
-        if (home) home.play();
+        location.href = 'mainScreen.html';
       }
     }
 
@@ -311,49 +112,7 @@
       }
     }
 
-    function displayMainScreenImage() {
-      isMainScreenImageVisible = !isMainScreenImageVisible;
-      if (isMainScreenImageVisible) {
-        document.querySelector('.fade').style.opacity = 1
-      } else {
-        document.querySelector('.fade').style.opacity = 0
-      }
-    }
-
-    setInterval(displayWelcomeImage, 5000);
-    setInterval(displayMainScreenImage, 5000);
-
-    //Show/hide tutorial dialog
-    function showTutorialDialog() {
-      document.getElementById('tutorial').style.display = 'flex';
-    }
-    function hideTutorialDialog() {
-      document.getElementById('tutorial').style.display = 'none';
-    }
-
-    //Show/hide setting dialog
-    function showSettingDialog() {
-      document.getElementById('setting').style.display = 'flex';
-      if (audio && !toggleButton.classList.contains('active')) {
-        toggleButton.classList.add('active')
-      }
-    }
-    function hideSettingDialog() {
-      document.getElementById('setting').style.display = 'none';
-    }
-
-    //Go to levels menu with the latest played level
-    function goToMenuPage() {
-      let currentLevel = getCookie('level') ? Number(getCookie('level')) : 1;
-      redirect(`level.html?page=${Math.ceil(currentLevel / 42)}`)
-    }
-
-    //Add tapping sound to other buttons (no redirect)
-    document.querySelectorAll('button, .navigator img, .main, #toggleButton').forEach(button => {
-      button.addEventListener('click', () => {
-        if (audio) audio.play();
-      })
-    });
+    setInterval(displayWelcomeImage, 5000)
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
