@@ -1648,5 +1648,55 @@
     "level": 330,
     "answer": "HANGKHONG",
     "display": "Hàng không"
+  },
+  {
+    "level": 331,
+    "answer": "TRIEUTIEN",
+    "display": "Triều Tiên"
+  },
+  {
+    "level": 332,
+    "answer": "CAMBIEUDIEN",
+    "display": "Cấm biểu diễn"
+  },
+  {
+    "level": 333,
+    "answer": "CHUYENGIOI",
+    "display": "Chuyển giới"
+  },
+  {
+    "level": 334,
+    "answer": "CUMGIACAM",
+    "display": "Cúm gia cầm"
+  },
+  {
+    "level": 335,
+    "answer": "VACXIN",
+    "display": "Vắc xin"
+  },
+  {
+    "level": 336,
+    "answer": "QUOCHOA",
+    "display": "Quốc hoa"
+  },
+  {
+    "level": 337,
+    "answer": "NGUOIMAU",
+    "display": "Người mẫu"
+  },
+  {
+    "level": 338,
+    "answer": "NHOMNHAC",
+    "display": "Nhóm nhạc"
+  },
+  {
+    "level": 339,
+    "answer": "NHANTOBIAN",
+    "display": "Nhân tố bí ẩn"
+  },
+  {
+    "level": 340,
+    "answer": "TRACHANH",
+    "display": "Trà chanh"
   }
 ]
