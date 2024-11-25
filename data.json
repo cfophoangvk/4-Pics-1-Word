@@ -1698,5 +1698,105 @@
     "level": 340,
     "answer": "TRACHANH",
     "display": "Trà chanh"
+  },
+  {
+    "level": 341,
+    "answer": "DALAT",
+    "display": "Đà Lạt"
+  },
+  {
+    "level": 342,
+    "answer": "BUONMATHUOT",
+    "display": "Buôn Ma Thuột"
+  },
+  {
+    "level": 343,
+    "answer": "BANA",
+    "display": "Bà Nà"
+  },
+  {
+    "level": 344,
+    "answer": "MIETVUON",
+    "display": "Miệt vườn"
+  },
+  {
+    "level": 345,
+    "answer": "LINHVAT",
+    "display": "Linh vật"
+  },
+  {
+    "level": 346,
+    "answer": "DUAGHENGO",
+    "display": "Đua ghe ngo"
+  },
+  {
+    "level": 347,
+    "answer": "VITVANG",
+    "display": "Vịt vàng"
+  },
+  {
+    "level": 348,
+    "answer": "CHOLCHNAMTHMAY",
+    "display": "Chol chnam thmay"
+  },
+  {
+    "level": 349,
+    "answer": "THAPDOI",
+    "display": "Tháp đôi"
+  },
+  {
+    "level": 350,
+    "answer": "IRAQ",
+    "display": "Iraq"
+  },
+  {
+    "level": 351,
+    "answer": "HATNHAN",
+    "display": "Hạt nhân"
+  },
+  {
+    "level": 352,
+    "answer": "TRUONGSA",
+    "display": "Trường Sa"
+  },
+  {
+    "level": 353,
+    "answer": "PHUQUOC",
+    "display": "Phú Quốc"
+  },
+  {
+    "level": 354,
+    "answer": "VOIRONG",
+    "display": "Vòi rồng"
+  },
+  {
+    "level": 355,
+    "answer": "GIANKHOAN",
+    "display": "Giàn khoan"
+  },
+  {
+    "level": 356,
+    "answer": "HOABINH",
+    "display": "Hòa bình"
+  },
+  {
+    "level": 357,
+    "answer": "DANGCONGSAN",
+    "display": "Đảng Cộng sản"
+  },
+  {
+    "level": 358,
+    "answer": "CUOPGIAT",
+    "display": "Cướp giật"
+  },
+  {
+    "level": 359,
+    "answer": "TENAN",
+    "display": "Tệ nạn"
+  },
+  {
+    "level": 360,
+    "answer": "DACCONG",
+    "display": "Đặc công"
   }
 ]
