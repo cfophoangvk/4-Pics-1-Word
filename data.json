@@ -1798,5 +1798,105 @@
     "level": 360,
     "answer": "DACCONG",
     "display": "Đặc công"
+  },
+  {
+    "level": 361,
+    "answer": "NHAPNGU",
+    "display": "Nhập ngũ"
+  },
+  {
+    "level": 362,
+    "answer": "DANTOC",
+    "display": "Dân tộc"
+  },
+  {
+    "level": 363,
+    "answer": "BIEUTINH",
+    "display": "Biểu tình"
+  },
+  {
+    "level": 364,
+    "answer": "BAUCU",
+    "display": "Bầu cử"
+  },
+  {
+    "level": 365,
+    "answer": "CACHMANG",
+    "display": "Cách mạng"
+  },
+  {
+    "level": 366,
+    "answer": "BIENGIOI",
+    "display": "Biên giới"
+  },
+  {
+    "level": 367,
+    "answer": "BUONLAU",
+    "display": "Buôn lậu"
+  },
+  {
+    "level": 368,
+    "answer": "LUCDIA",
+    "display": "Lục địa"
+  },
+  {
+    "level": 369,
+    "answer": "YEUNUOC",
+    "display": "Yêu nước"
+  },
+  {
+    "level": 370,
+    "answer": "CANHSATBIEN",
+    "display": "Cảnh sát biển"
+  },
+  {
+    "level": 371,
+    "answer": "DAMPHAN",
+    "display": "Đàm phán"
+  },
+  {
+    "level": 372,
+    "answer": "COTCO",
+    "display": "Cột cờ"
+  },
+  {
+    "level": 373,
+    "answer": "KHUNGBO",
+    "display": "Khủng bố"
+  },
+  {
+    "level": 374,
+    "answer": "MITTINH",
+    "display": "Mít tinh"
+  },
+  {
+    "level": 375,
+    "answer": "VUKHI",
+    "display": "Vũ khí"
+  },
+  {
+    "level": 376,
+    "answer": "TRUCTHANG",
+    "display": "Trực thăng"
+  },
+  {
+    "level": 377,
+    "answer": "VETINH",
+    "display": "Vệ tinh"
+  },
+  {
+    "level": 378,
+    "answer": "CHIENHAO",
+    "display": "Chiến hào"
+  },
+  {
+    "level": 379,
+    "answer": "KHONGQUAN",
+    "display": "Không quân"
+  },
+  {
+    "level": 380,
+    "answer": "TAUNGAM",
+    "display": "Tàu ngầm"
   }
 ]
