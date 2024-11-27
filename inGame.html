@@ -596,12 +596,8 @@
     let timeOutFunction;
     let isTimeoutExist = false;
     function checkAnswer() {
-      let result = '';
-      document.querySelectorAll("#answer div").forEach(letter => {
-        result += letter.innerText;
-      })
-      if (result === finalAnswer) { //Proceed to next level
-        //Play the sound
+      const result = Array.from(document.querySelectorAll("#answer div")).map(letter => letter.innerText).join('');
+      if (result === finalAnswer) {
         if (rightSound) rightSound.play();
         document.querySelectorAll("#answer div").forEach(letter => {
           //Clear the effect of wrong if exist
@@ -661,7 +657,7 @@
         isTimeoutExist = true;
       }
     }
-
+    
     //Reveal a letter.
     function revealLetter() {
       //Play tapping sound
