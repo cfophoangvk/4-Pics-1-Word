@@ -1898,5 +1898,105 @@
     "level": 380,
     "answer": "TAUNGAM",
     "display": "Tàu ngầm"
+  },
+  {
+    "level": 381,
+    "answer": "DIEPVIEN",
+    "display": "Điệp viên"
+  },
+  {
+    "level": 382,
+    "answer": "QUANY",
+    "display": "Quân y"
+  },
+  {
+    "level": 383,
+    "answer": "BANDO",
+    "display": "Bản đồ"
+  },
+  {
+    "level": 384,
+    "answer": "TAINAN",
+    "display": "Tai nạn"
+  },
+  {
+    "level": 385,
+    "answer": "HOAHAU",
+    "display": "Hoa hậu"
+  },
+  {
+    "level": 386,
+    "answer": "TENLUA",
+    "display": "Tên lửa"
+  },
+  {
+    "level": 387,
+    "answer": "MOITRUONG",
+    "display": "Môi trường"
+  },
+  {
+    "level": 388,
+    "answer": "TRONGRUNG",
+    "display": "Trồng rừng"
+  },
+  {
+    "level": 389,
+    "answer": "TOANCAUHOA",
+    "display": "Toàn cầu hóa"
+  },
+  {
+    "level": 390,
+    "answer": "VANHOA",
+    "display": "Văn hóa"
+  },
+  {
+    "level": 391,
+    "answer": "NGOAINGU",
+    "display": "Ngoại ngữ"
+  },
+  {
+    "level": 392,
+    "answer": "VANG",
+    "display": "Vàng"
+  },
+  {
+    "level": 393,
+    "answer": "LAMPHAT",
+    "display": "Lạm phát"
+  },
+  {
+    "level": 394,
+    "answer": "XUATSIEU",
+    "display": "Xuất siêu"
+  },
+  {
+    "level": 395,
+    "answer": "TIENAO",
+    "display": "Tiền ảo"
+  },
+  {
+    "level": 396,
+    "answer": "PHAGIA",
+    "display": "Phá giá"
+  },
+  {
+    "level": 397,
+    "answer": "RUONGBACTHANG",
+    "display": "Ruộng bậc thang"
+  },
+  {
+    "level": 398,
+    "answer": "XANGDAU",
+    "display": "Xăng dầu"
+  },
+  {
+    "level": 399,
+    "answer": "CAPHE",
+    "display": "Cà phê"
+  },
+  {
+    "level": 400,
+    "answer": "NOKIA",
+    "display": "Nokia"
   }
 ]

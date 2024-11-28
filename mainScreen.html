@@ -233,9 +233,9 @@
     function redirect(url) {
       if (audio) {
         audio.play();
-        audio.onended = () => window.location.href = url;
+        audio.onended = () => location.href = url;
       } else {
-        window.location.href = url; //No sound, just redirect
+        location.href = url; //No sound, just redirect
       }
     }
 

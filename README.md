@@ -3,8 +3,8 @@
 <p align="center">(although this project is NOT about .NET)</p>
 
 #### About this project:
-- 🔭 This project has been ongoing for **35** days (2024/10/22 - 2024/11/25)<br>
-- Number of LOCs: **2,029** (Upgrading)<br>
+- 🔭 This project has been ongoing for **38** days (2024/10/22 - 2024/11/28)<br>
+- Number of LOCs: **2,072** (Upgrading)<br>
 - 📫 Contact me at **hieuthien20042004@gmail.com**
 
 ### This project is VERY lite, as it is made of:
