@@ -7,6 +7,8 @@
 - Number of LOCs: **2,072** (Upgrading)<br>
 - 📫 Contact me at **hieuthien20042004@gmail.com**
 
+# NOTE: THIS PROJECT HAS BEEN CLOSED FOR MAINTAINANCE
+
 ### This project is VERY lite, as it is made of:
 
 <div style="display:flex;gap:20px;">
@@ -31,5 +33,5 @@
 
 ### NO FRAMEWORK INCLUDED!
 ### This website is deployed on Vercel!
-- Visit [here](https://4-pics-1-word.vercel.app/) to see the result!  
+- Visit [here](https://4-pics-1-word.vercel.app/) to see the result!
 - There are 400 questions in total, and it is expanding more!
